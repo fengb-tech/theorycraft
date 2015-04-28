@@ -51,12 +51,12 @@ Critical | Resilience
 ## Gear
 
 * Rarity governs stat quality: [WoW]
-  *  10% - gray
-  *  30% - white
-  *  50% - green
-  *  70% - blue
-  *  90% - purple
-  * 100% - orange
+  *  -5L - gray
+  *  +0L - white
+  *  +3L - green
+  *  +5L - blue
+  *  +7L - purple
+  * +10L - orange
 * Gear has specific focuses:
   * Weapon - damage
   * Shield - dodge
