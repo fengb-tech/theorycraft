@@ -42,11 +42,11 @@ Each class has [3] abilities they can leave active: defense, offense, and low le
 
 ## Stats
 
-Offense  | Defense
--------- | -------
-Damage   | Armor
-Hit      | Dodge
-Critical | Resilience
+Offense  | Defense    | Equation
+-------- | ---------- | --------
+Damage   | Armor      | [total damage] = [Damage] / [Armor]
+Hit      | Dodge      | [hit percent] = [Hit] / [Dodge] * 70%
+Critical | Resilience | [crit damage] = (1 + [Crit Damage] / [Resilience]) * [total damage]
 
 ## Gear
 
@@ -62,9 +62,3 @@ Critical | Resilience
   * Shield - dodge
   * Body Armor - armor
   * Helm - resilience
-
-## Equations
-
-* [total damage] = [Damage] / [Armor]
-* [hit percent] = [Hit] / [Dodge] * 70%
-* [crit damage] = (1 + [Crit Damage] / [Resilience]) * [total damage]
