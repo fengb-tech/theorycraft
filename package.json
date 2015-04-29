@@ -2,11 +2,12 @@
   "name": "theorycraft",
   "version": "0.0.1",
   "description": "an automated grind",
-  "main": "server.js",
+  "main": "server.es6",
   "directories": {
     "doc": "doc"
   },
   "scripts": {
+    "start": "babel-node server.es6",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/fengb-tech/theorycraft",
   "dependencies": {
+    "babel": "^5.1.13",
     "koa": "^0.19.1"
   }
 }

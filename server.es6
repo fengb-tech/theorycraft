@@ -1,4 +1,5 @@
-var koa = require('koa')
+import koa from 'koa'
+
 var app = koa()
 
 // logger
