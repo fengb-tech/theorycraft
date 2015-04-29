@@ -1,20 +1,28 @@
 import gulp from 'gulp'
 import jshint from 'gulp-jshint'
 import mocha from 'gulp-mocha'
+import print from 'gulp-print'
+import _ from 'lodash'
 
 let paths = {
   meta: ['.jshintrc', '*.{js,json,es6}'],
-  lib:  ['lib/**.{js,es6}'],
-  test: ['test/**.{js,es6}'],
+  lib:  ['lib/**/*.{js,es6}'],
+  test: ['test/**/*.{js,es6}'],
 }
+paths.all = _(paths).values().flatten().value()
+
+gulp.task('files', () => {
+  return gulp.src(paths.all)
+        .pipe(print())
+})
 
 gulp.task('lint', () => {
-  return gulp.src([...paths.meta, ...paths.lib, ...paths.test])
+  return gulp.src(paths.all)
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
 })
 
-gulp.task('mocha', () => {
+gulp.task('mocha', ['lint'], () => {
   return gulp.src([...paths.lib, ...paths.test], {read: false})
         .pipe(mocha())
 })
