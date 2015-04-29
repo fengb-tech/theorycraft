@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/fengb-tech/theorycraft/issues"
   },
-  "homepage": "https://github.com/fengb-tech/theorycraft"
+  "homepage": "https://github.com/fengb-tech/theorycraft",
+  "dependencies": {
+    "koa": "^0.19.1"
+  }
 }
