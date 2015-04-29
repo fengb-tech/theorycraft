@@ -8,11 +8,20 @@ export default class Stats {
     }
   }
 
-  merge(object = {}){
+  merge(object){
     for(let key of Object.keys(object)){
-      if(this[key] != undefined) {
+      if(this[key] != null) {
         this[key] += object[key]
       }
     }
+    return this
+  }
+
+  add(object){
+    return this.clone().merge(object)
+  }
+
+  clone(){
+    new Stats(this)
   }
 }
