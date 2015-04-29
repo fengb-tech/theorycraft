@@ -1,4 +1,5 @@
 import koa from 'koa'
+import router from './router'
 
 var app = koa()
 export default app
@@ -12,9 +13,4 @@ app.use(function *(next){
   console.log('%s %s - %s', this.method, this.url, ms)
 })
 
-// response
-
-app.use(function *(){
-  /* jshint noyield:true */
-  this.body = 'Hello World'
-})
+app.use(router.routes())

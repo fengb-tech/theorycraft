@@ -22,8 +22,11 @@
   "homepage": "https://github.com/fengb-tech/theorycraft",
   "dependencies": {
     "babel": "^5.1.13",
+    "co-fs": "^1.2.0",
     "koa": "^0.19.1",
-    "lodash": "^3.7.0"
+    "koa-router": "^4.3.2",
+    "lodash": "^3.7.0",
+    "markdown-it": "^4.2.0"
   },
   "devDependencies": {
     "chai": "^2.3.0",
