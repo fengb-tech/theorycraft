@@ -4,18 +4,18 @@ import mocha from 'gulp-mocha'
 
 let paths = {
   meta: ['.jshintrc', '*.{js,json,es6}'],
-  src:  ['src/**.{js,es6}'],
+  lib:  ['lib/**.{js,es6}'],
   test: ['test/**.{js,es6}'],
 }
 
 gulp.task('lint', () => {
-  return gulp.src([...paths.meta, ...paths.src, ...paths.test])
+  return gulp.src([...paths.meta, ...paths.lib, ...paths.test])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
 })
 
 gulp.task('mocha', () => {
-  return gulp.src([...paths.src, ...paths.test], {read: false})
+  return gulp.src([...paths.lib, ...paths.test], {read: false})
         .pipe(mocha())
 })
 

@@ -1,6 +1,7 @@
 import koa from 'koa'
 
 var app = koa()
+export default app
 
 // logger
 
@@ -17,5 +18,3 @@ app.use(function *(){
   /* jshint noyield:true */
   this.body = 'Hello World'
 })
-
-app.listen(3000)
