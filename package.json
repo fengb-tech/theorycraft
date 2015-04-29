@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "chai": "^2.3.0",
+    "chai-properties": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-jshint": "^1.10.0",
     "gulp-mocha": "^2.0.1",
