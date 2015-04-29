@@ -1,7 +1,7 @@
-import assert from 'assert'
+import { expect } from 'chai'
 
 describe('Test', () => {
   it('runs', () => {
-    assert.equal(1, 1)
+    expect(1).to.equal(1)
   })
 })
