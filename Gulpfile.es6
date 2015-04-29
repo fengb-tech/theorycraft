@@ -22,11 +22,15 @@ gulp.task('lint', () => {
         .pipe(jshint.reporter('default'))
 })
 
-gulp.task('mocha', ['lint'], () => {
+gulp.task('mocha', () => {
   return gulp.src([...paths.lib, ...paths.test], {read: false})
-        .pipe(mocha())
+        .pipe(mocha({ reporter: 'dot' }))
 })
 
 gulp.task('test', ['lint', 'mocha'])
+
+gulp.task('watch-test', () => {
+  gulp.watch(paths.all, ['lint', 'test'])
+})
 
 gulp.task('default', ['test'])
