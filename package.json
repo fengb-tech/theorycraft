@@ -24,6 +24,7 @@
     "babel": "^5.1.13",
     "co-fs": "^1.2.0",
     "koa": "^0.19.1",
+    "koa-logger": "^1.2.2",
     "koa-router": "^4.3.2",
     "lodash": "^3.7.0",
     "markdown-it": "^4.2.0"
