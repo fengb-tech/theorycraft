@@ -8,6 +8,16 @@ export default class Stats {
     }
   }
 
+  static mergeAll(array){
+    let mergedStats = new Stats(array[0])
+
+    for(let i = 1; i < array.length; i++){
+      mergedStats.merge(array[i])
+    }
+
+    return mergedStats
+  }
+
   merge(object){
     for(let key of Object.keys(object)){
       if(this[key] != null) {
