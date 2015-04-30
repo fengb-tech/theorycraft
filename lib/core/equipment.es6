@@ -1,17 +1,17 @@
-import Stats from 'tc/core/stats'
 import _ from 'lodash'
 
-const ITEM_TYPES = ['weapon', 'shield', 'helm', 'body']
+import Stats from 'tc/core/stats'
+import Item from 'tc/core/item'
 
 export default class Equipment {
   constructor(){
-    for(let itemType of ITEM_TYPES){
+    for(let itemType of Item.TYPES){
       this[itemType] = null
     }
   }
 
   get stats(){
-    let itemStatses = _.map(ITEM_TYPES, (type) => this[type].stats)
+    let itemStatses = _.map(Item.TYPES, (type) => this[type].stats)
     return Stats.mergeAll(itemStatses)
   }
 }
