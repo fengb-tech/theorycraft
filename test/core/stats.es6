@@ -30,9 +30,33 @@ describe('Stats', () => {
         resilience: 0,
       })
     })
+
+    it('coerces to integer', () => {
+      let stats = new Stats({ damage: 100.1 })
+      expect(stats.damage).to.equal(100)
+    })
   })
 
-  describe('.merge()', () => {
+  describe('.allAt()', () => {
+    it('creates with all stats at one value', () => {
+      let stats = Stats.allAt(200)
+      expect(stats).to.have.properties({
+        damage:     200,
+        hit:        200,
+        critical:   200,
+        armor:      200,
+        dodge:      200,
+        resilience: 200,
+      })
+    })
+
+    it('coerces to integer', () => {
+      let stats = Stats.allAt(50.4)
+      expect(stats.damage).to.equal(50)
+    })
+  })
+
+  describe('#merge()', () => {
     it('merges new stats onto the first object', () => {
       let stats = new Stats({
         damage: 1,

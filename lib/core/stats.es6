@@ -1,11 +1,20 @@
-const STAT_NAMES = ['damage', 'hit', 'critical',
-                    'armor', 'dodge', 'resilience']
-
 export default class Stats {
   constructor(object = {}){
-    for(let statName of STAT_NAMES){
-      this[statName] = object[statName] || 0
+    for(let statName of Stats.TYPES){
+      this[statName] = object[statName] | 0
     }
+  }
+
+  static allAt(value){
+    value = value | 0
+
+    let stats = new Stats()
+
+    for(let statName of Stats.TYPES){
+      stats[statName] = value
+    }
+
+    return stats
   }
 
   static mergeAll(array){
@@ -35,3 +44,6 @@ export default class Stats {
     new Stats(this)
   }
 }
+
+Stats.TYPES = ['damage', 'hit', 'critical',
+               'armor', 'dodge', 'resilience']
