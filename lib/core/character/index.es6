@@ -1,5 +1,5 @@
-import Equipment from 'tc/core/equipment'
-import Base from 'tc/core/character/base'
+import Equipment from './equipment'
+import Base from './base'
 
 export default class Character {
   constructor(){
