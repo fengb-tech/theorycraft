@@ -1,14 +1,17 @@
 import Equipment from 'tc/core/equipment'
-import Level from 'tc/core/character/level'
+import Base from 'tc/core/character/base'
 
 export default class Character {
   constructor(){
-    this.xp = 0
-    this.level = new Level(1)
+    this.base = new Base(0)
     this.equipment = new Equipment()
   }
 
   get stats(){
-    return this.level.stats.add(this.equipment.stats)
+    return this.base.stats.add(this.equipment.stats)
+  }
+
+  addXp(xp){
+    this.base.xp += xp
   }
 }
