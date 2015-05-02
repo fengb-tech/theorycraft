@@ -51,12 +51,12 @@ Critical | Resilience | [crit damage] = (1 + [Crit Damage] / [Resilience]) * [to
 ## Gear
 
 * Rarity governs stat quality: [WoW]
-  *  -5L - gray
-  *  +0L - white
-  *  +3L - green
+  *  -10L - gray
+  *  -5L - white
+  *  +0L - green
   *  +5L - blue
-  *  +7L - purple
-  * +10L - orange
+  * +10L - purple
+  * +20L - orange
 * Gear has specific focuses:
   * Weapon - damage
   * Shield - dodge
