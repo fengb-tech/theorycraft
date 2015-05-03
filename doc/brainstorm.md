@@ -20,7 +20,7 @@ Each class has [3] abilities they can leave active: defense, offense, and low le
 
 * Warrior
   * defense - increase armor
-  * offense - increase damage
+  * offense - increase power
   * low level - deal damage to 2 targets
 * Rogue
   * defensive - increase dodge
@@ -44,9 +44,9 @@ Each class has [3] abilities they can leave active: defense, offense, and low le
 
 Offense  | Defense    | Equation
 -------- | ---------- | --------
-Damage   | Armor      | [total damage] = [Damage] / [Armor]
+Power    | Armor      | [total damage] = [Power] / [Armor]
 Hit      | Dodge      | [hit percent] = [Hit] / [Dodge] * 70%
-Critical | Resilience | [crit damage] = (1 + [Crit Damage] / [Resilience]) * [total damage]
+Critical | Resilience | [crit multiplier] = (1 + [Crit Damage] / [Resilience])
 
 ## Gear
 
@@ -58,7 +58,7 @@ Critical | Resilience | [crit damage] = (1 + [Crit Damage] / [Resilience]) * [to
   * +10L - purple
   * +20L - orange
 * Gear has specific focuses:
-  * Weapon - damage
+  * Weapon - power
   * Shield - dodge
   * Body Armor - armor
   * Helm - resilience
