@@ -7,7 +7,7 @@ export default class Scheduler {
   initiative(){
     let schedule = {}
     for(let [c, character] of this.characters.entries()){
-      let time = -character.initiative
+      let time = this.startTime - character.initiative
       if(!schedule[time]){
         schedule[time] = []
       }
@@ -21,10 +21,11 @@ export default class Scheduler {
     let schedule = {}
 
     for(let [c, character] of this.characters.entries()){
-      let cStart = Math.ceil((start + character.initiative) / character.attackMspa)
-      let cEnd = Math.ceil((end + character.initiative) / character.attackMspa)
+      let offset = this.startTime - character.initiative
+      let cStart = Math.ceil((start - offset) / character.attackMspa)
+      let cEnd = Math.ceil((end - offset) / character.attackMspa)
       for(let i = cStart; i < cEnd; i++){
-        let time = i * character.attackMspa - character.initiative
+        let time = i * character.attackMspa + offset
         if(!schedule[time]){
           schedule[time] = []
         }

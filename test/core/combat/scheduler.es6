@@ -47,4 +47,40 @@ describe('Scheduler', () => {
       })
     })
   })
+
+  describe('startTime = 1', () => {
+    beforeEach(function(){
+      this.scheduler = new Scheduler(1, this.attackers)
+    })
+
+    it('returns actions for initiative', function(){
+      // time < 1
+      let attackers = this.scheduler.initiative()
+      expect(attackers).to.have.properties({
+        '0': [0],
+      })
+    })
+
+    it('returns actions between 1 and 3001', function(){
+      // 1 <= time < 3001
+      let attackers = this.scheduler.between(1, 3001)
+      expect(attackers).to.have.properties({
+            '1': [1, 2],
+         '1001': [2],
+         '2001': [1, 2],
+         '3000': [0],
+      })
+    })
+
+    it('returns actions between 1001 and 3001', function(){
+      // 1001 <= time < 4001
+      let attackers = this.scheduler.between(1001, 4001)
+      expect(attackers).to.have.properties({
+         '1001': [2],
+         '2001': [1, 2],
+         '3000': [0],
+         '3001': [2],
+      })
+    })
+  })
 })
