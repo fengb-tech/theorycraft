@@ -16,12 +16,12 @@ describe('Combat', () => {
     })
 
     it('is 0.7 when att.accuracy == def.dodge', function(){
-      this.attackerStats.hit = this.defenderStats.dodge
+      this.attackerStats.accuracy = this.defenderStats.dodge
       expect(this.combat.hitPercent).to.be.closeTo(0.7, 0.001)
     })
 
     it('is 1 when att.accuracy == 1.5x def.dodge', function(){
-      this.attackerStats.hit = 1.5 * this.defenderStats.dodge
+      this.attackerStats.accuracy = 1.5 * this.defenderStats.dodge
       expect(this.combat.hitPercent).to.be.closeTo(1, 0.001)
     })
   })

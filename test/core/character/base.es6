@@ -23,13 +23,13 @@ describe('Character', () => {
     describe('.statsForLevel()', () => {
       it('has correct stats', () => {
         let stats = Base.statsForLevel(1)
-        expect(stats.damage).to.equal(100)
+        expect(stats.power).to.equal(100)
 
         stats = Base.statsForLevel(2)
-        expect(stats.damage).to.equal(105)
+        expect(stats.power).to.equal(105)
 
         stats = Base.statsForLevel(10)
-        expect(stats.damage).to.equal(155)
+        expect(stats.power).to.equal(155)
       })
     })
   })

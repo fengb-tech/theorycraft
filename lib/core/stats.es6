@@ -45,5 +45,5 @@ export default class Stats {
   }
 }
 
-Stats.TYPES = ['damage', 'hit', 'critical',
-               'armor', 'dodge', 'resilience']
+Stats.TYPES = ['power', 'accuracy', 'critical',
+               'armor', 'dodge',    'resilience']

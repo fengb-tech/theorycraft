@@ -7,8 +7,8 @@ describe('Stats', () => {
     it('builds as 0 everything', () => {
       let stats = new Stats()
       expect(stats).to.have.properties({
-        damage:     0,
-        hit:        0,
+        power:      0,
+        accuracy:   0,
         critical:   0,
         armor:      0,
         dodge:      0,
@@ -18,12 +18,12 @@ describe('Stats', () => {
 
     it('builds using existing data where possible', () => {
       let stats = new Stats({
-        damage: 4,
-        hit: 8,
+        power:    4,
+        accuracy: 8,
       })
       expect(stats).to.have.properties({
-        damage:     4,
-        hit:        8,
+        power:      4,
+        accuracy:   8,
         critical:   0,
         armor:      0,
         dodge:      0,
@@ -32,8 +32,8 @@ describe('Stats', () => {
     })
 
     it('coerces to integer', () => {
-      let stats = new Stats({ damage: 100.1 })
-      expect(stats.damage).to.equal(100)
+      let stats = new Stats({ power:  100.1 })
+      expect(stats.power).to.equal(100)
     })
   })
 
@@ -41,8 +41,8 @@ describe('Stats', () => {
     it('creates with all stats at one value', () => {
       let stats = Stats.allAt(200)
       expect(stats).to.have.properties({
-        damage:     200,
-        hit:        200,
+        power:      200,
+        accuracy:   200,
         critical:   200,
         armor:      200,
         dodge:      200,
@@ -52,26 +52,26 @@ describe('Stats', () => {
 
     it('coerces to integer', () => {
       let stats = Stats.allAt(50.4)
-      expect(stats.damage).to.equal(50)
+      expect(stats.power).to.equal(50)
     })
   })
 
   describe('#merge()', () => {
     it('merges new stats onto the first object', () => {
       let stats = new Stats({
-        damage: 1,
-        hit: 2,
+        power:      1,
+        accuracy:   2,
         resilience: 9,
       })
       stats.merge({
-        damage: 5,
-        hit: 6,
+        power:    5,
+        accuracy: 6,
         critical: 7,
       })
 
       expect(stats).to.have.properties({
-        damage:     6,
-        hit:        8,
+        power:      6,
+        accuracy:   8,
         critical:   7,
         armor:      0,
         dodge:      0,

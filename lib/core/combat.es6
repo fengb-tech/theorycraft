@@ -5,7 +5,7 @@ export default class Combat {
   }
 
   get hitPercent(){
-    return Math.min(0.7 * this.attackerStats.hit / this.defenderStats.dodge, 1)
+    return Math.min(0.7 * this.attackerStats.accuracy / this.defenderStats.dodge, 1)
   }
 
   get critPercent(){
