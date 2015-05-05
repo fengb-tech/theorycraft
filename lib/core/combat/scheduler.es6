@@ -1,18 +1,18 @@
 export default class Scheduler {
-  constructor(startTime, characters){
+  constructor(startTime, attackers){
     this.startTime = startTime
-    this.characters = characters
+    this.attackers = attackers
   }
 
   initiative(){
     let schedule = {}
-    for(let [c, character] of this.characters.entries()){
-      let time = this.startTime - character.initiative
+    for(let [a, attacker] of this.attackers.entries()){
+      let time = this.startTime - attacker.initiative
       if(!schedule[time]){
         schedule[time] = []
       }
 
-      schedule[time].push(c)
+      schedule[time].push(a)
     }
     return schedule
   }
@@ -20,17 +20,17 @@ export default class Scheduler {
   between(start, end){
     let schedule = {}
 
-    for(let [c, character] of this.characters.entries()){
-      let offset = this.startTime - character.initiative
-      let cStart = Math.ceil((start - offset) / character.attackMspa)
-      let cEnd = Math.ceil((end - offset) / character.attackMspa)
-      for(let i = cStart; i < cEnd; i++){
-        let time = i * character.attackMspa + offset
+    for(let [a, attacker] of this.attackers.entries()){
+      let offset = this.startTime - attacker.initiative
+      let aStart = Math.ceil((start - offset) / attacker.attackMspa)
+      let aEnd = Math.ceil((end - offset) / attacker.attackMspa)
+      for(let i = aStart; i < aEnd; i++){
+        let time = i * attacker.attackMspa + offset
         if(!schedule[time]){
           schedule[time] = []
         }
 
-        schedule[time].push(c)
+        schedule[time].push(a)
       }
     }
 
