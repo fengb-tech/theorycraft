@@ -19,7 +19,7 @@ describe('Scheduler', () => {
     it('returns actions for initiative', function(){
       // time < 0
       let attackers = this.scheduler.initiative()
-      expect(attackers).to.have.properties({
+      expect(attackers).to.deep.equals({
         '-1': [0],
       })
     })
@@ -27,7 +27,7 @@ describe('Scheduler', () => {
     it('returns actions between 0 and 3000', function(){
       // 0 <= time < 3000
       let attackers = this.scheduler.between(0, 3000)
-      expect(attackers).to.have.properties({
+      expect(attackers).to.deep.equals({
             '0': [1, 2],
          '1000': [2],
          '2000': [1, 2],
@@ -38,7 +38,7 @@ describe('Scheduler', () => {
     it('returns actions between 1000 and 4000', function(){
       // 1000 <= time < 5000
       let attackers = this.scheduler.between(1000, 5000)
-      expect(attackers).to.have.properties({
+      expect(attackers).to.deep.equals({
          '1000': [2],
          '2000': [1, 2],
          '2999': [0],
@@ -56,7 +56,7 @@ describe('Scheduler', () => {
     it('returns actions for initiative', function(){
       // time < 1
       let attackers = this.scheduler.initiative()
-      expect(attackers).to.have.properties({
+      expect(attackers).to.deep.equals({
         '0': [0],
       })
     })
@@ -64,7 +64,7 @@ describe('Scheduler', () => {
     it('returns actions between 1 and 3001', function(){
       // 1 <= time < 3001
       let attackers = this.scheduler.between(1, 3001)
-      expect(attackers).to.have.properties({
+      expect(attackers).to.deep.equals({
             '1': [1, 2],
          '1001': [2],
          '2001': [1, 2],
@@ -75,7 +75,7 @@ describe('Scheduler', () => {
     it('returns actions between 1001 and 3001', function(){
       // 1001 <= time < 4001
       let attackers = this.scheduler.between(1001, 4001)
-      expect(attackers).to.have.properties({
+      expect(attackers).to.deep.equals({
          '1001': [2],
          '2001': [1, 2],
          '3000': [0],

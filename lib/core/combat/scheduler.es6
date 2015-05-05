@@ -7,7 +7,9 @@ export default class Scheduler {
   initiative(){
     let startTime = this.startTime
     return this._buildSchedule(function *(attacker){
-      yield startTime - attacker.initiative
+      if(attacker.initiative > 0){
+        yield startTime - attacker.initiative
+      }
     })
   }
 
