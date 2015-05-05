@@ -1,7 +1,7 @@
 import { expect } from 'tc-test/support'
-import Base from 'tc/core/character/base'
+import Base from 'tc/core/hero/base'
 
-describe('core/character/base', () => {
+describe('core/hero/base', () => {
   describe('constructor', () => {
     it('has correct xp', () => {
       let base = new Base(1)

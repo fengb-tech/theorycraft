@@ -1,7 +1,7 @@
 import Equipment from './equipment'
 import Base from './base'
 
-export default class Character {
+export default class Hero {
   constructor(){
     this.base = new Base(0)
     this.equipment = new Equipment()

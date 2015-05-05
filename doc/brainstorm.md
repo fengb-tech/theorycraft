@@ -9,9 +9,9 @@
 * All stats should be useful. Different classes should prefer different stats.
 
 * Reusable recovery move for 50% health. [Automatic] after battle and costs [1s] during battle.
-* Killing blow leaves character at 1 health and forces recover. If player takes another killing blow within 2s, he retreats from combat. [Borderlands]
+* Killing blow leaves hero at 1 health and forces recover. If player takes another killing blow within 2s, he retreats from combat. [Borderlands]
 * Resurrecting inherits all gear; increases XP by [1%] per level sacrificed.
-* Character stats start at [100] and increase by [1%] every level.
+* Hero stats start at [100] and increase by [1%] every level.
 * Wearing perfect gear should increase stats by [2x].
 
 ## Classes
