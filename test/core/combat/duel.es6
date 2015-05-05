@@ -1,13 +1,13 @@
 import { expect } from 'tc-test/support'
 
-import Combat from 'tc/core/combat'
+import Duel from 'tc/core/combat/duel'
 import Stats from 'tc/core/stats'
 
-describe('Combat', () => {
+describe('core/combat/duel', () => {
   beforeEach(function(){
     this.attackerStats = Stats.allAt(0)
     this.defenderStats = Stats.allAt(0)
-    this.combat = new Combat(this.attackerStats, this.defenderStats)
+    this.combat = new Duel(this.attackerStats, this.defenderStats)
   })
 
   describe('#hitPercent', () => {

@@ -2,7 +2,7 @@ import { expect } from 'tc-test/support'
 
 import Scheduler from 'tc/core/combat/scheduler'
 
-describe('Scheduler', () => {
+describe('core/combat/scheduler', () => {
   beforeEach(function(){
     this.attackers = [
       { attackMspa: 3000, initiative: 1 },

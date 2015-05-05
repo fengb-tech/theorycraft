@@ -1,4 +1,4 @@
-export default class Combat {
+export default class Duel {
   constructor(attackerStats, defenderStats){
     this.attackerStats = attackerStats
     this.defenderStats = defenderStats
