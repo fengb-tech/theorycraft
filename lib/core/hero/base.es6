@@ -9,8 +9,12 @@ export default class Base {
     return 1
   }
 
+  static statValueForLevel(level){
+    return 100 * Math.pow(1.05, level - 1)
+  }
+
   static statsForLevel(level){
-    return Stats.allAt(100 * Math.pow(1.05, level - 1))
+    return Stats.allAt(Base.statValueForLevel(level))
   }
 
   get xp(){
