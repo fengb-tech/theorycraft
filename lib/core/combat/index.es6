@@ -2,7 +2,7 @@ import _ from 'lodash'
 import Scheduler from './scheduler'
 import Duel from './duel'
 
-export default class Combat {
+export class Combat {
   constructor(startTime, hero, enemies){
     this.lastTickTime = startTime
     this.hero = hero
@@ -50,7 +50,7 @@ export default class Combat {
       return
     }
 
-    let damage = attacker.baseDamage() * duel.damageMultiplier
+    let damage = attacker.rollDamage() * duel.damageMultiplier
     if(roll >= duel.critPercent){
       damage *= duel.critMultiplier
     }

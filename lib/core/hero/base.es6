@@ -1,20 +1,20 @@
 import Stats from 'tc/core/stats'
 
+export function statValueForLevel(level){
+  return 100 * Math.pow(1.05, level - 1)
+}
+
+export function statsForLevel(level){
+  return Stats.allAt(statValueForLevel(level))
+}
+
+export function levelForXp(xp){
+  return 1
+}
+
 export default class Base {
   constructor(xp){
     this.xp = xp
-  }
-
-  static levelForXp(xp){
-    return 1
-  }
-
-  static statValueForLevel(level){
-    return 100 * Math.pow(1.05, level - 1)
-  }
-
-  static statsForLevel(level){
-    return Stats.allAt(Base.statValueForLevel(level))
   }
 
   get xp(){
@@ -24,14 +24,10 @@ export default class Base {
   set xp(xp){
     this._xp = xp
 
-    let targetLevel = Base.levelForXp(xp)
+    let targetLevel = levelForXp(xp)
     if(this.level !== targetLevel){
       this.level = targetLevel
-      this.stats = Base.statsForLevel(targetLevel)
+      this.stats = statsForLevel(targetLevel)
     }
-  }
-
-  valueOf(){
-    return this.value
   }
 }

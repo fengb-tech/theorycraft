@@ -1,8 +1,9 @@
 import { expect } from 'tc-test/support'
 import Base from 'tc/core/hero/base'
+import { statsForLevel, levelForXp } from 'tc/core/hero/base'
 
 describe('core/hero/base', () => {
-  describe('constructor', () => {
+  describe('Base', () => {
     it('has correct xp', () => {
       let base = new Base(1)
       expect(base.xp).to.equal(1)
@@ -12,22 +13,22 @@ describe('core/hero/base', () => {
     })
   })
 
-  describe('.levelForXp()', () => {
+  describe('levelForXp()', () => {
     it('returns 1 for xp=0', () => {
-      let target = Base.levelForXp(0)
+      let target = levelForXp(0)
       expect(target).to.equal(1)
     })
   })
 
-  describe('.statsForLevel()', () => {
+  describe('statsForLevel()', () => {
     it('has correct stats', () => {
-      let stats = Base.statsForLevel(1)
+      let stats = statsForLevel(1)
       expect(stats.power).to.equal(100)
 
-      stats = Base.statsForLevel(2)
+      stats = statsForLevel(2)
       expect(stats.power).to.equal(105)
 
-      stats = Base.statsForLevel(10)
+      stats = statsForLevel(10)
       expect(stats.power).to.equal(155)
     })
   })
