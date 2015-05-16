@@ -1,5 +1,5 @@
 import MarkdownIt from 'markdown-it'
-import fs from 'co-fs'
+import fs from 'mz/fs'
 
 var markdown = new MarkdownIt()
 
