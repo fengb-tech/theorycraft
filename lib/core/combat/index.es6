@@ -1,46 +1,43 @@
-import _ from 'lodash'
-import Scheduler from './scheduler'
+import createSchedule from './scheduler'
 import Duel from './duel'
 
+export default function combat(hero, enemies){
+  return new Combat(hero, enemies).run()
+}
+
 export class Combat {
-  constructor(startTime, hero, enemies){
-    this.lastTickTime = startTime
+  constructor(hero, enemies){
     this.hero = hero
     this.enemies = enemies
-    this.attackers = [hero, ...enemies]
-    this.done = false
-
-    this.scheduler = new Scheduler(startTime, this.attackers)
-    this.resolve(this.scheduler.initiative())
   }
 
-  tickTo(targetTime){
-    if(this.done || targetTime <= this.lastTickTime){
-      return
-    }
+  run*(){
+    let directives = {}
+    for(let [time, attackers] of createSchedule([hero, ...enemies])){
+      let activeAttackers = attackers.filter((attacker) => attacker.hp > 0)
+      if(activeAttackers.length <= 0){
+        continue
+      }
 
-    let schedule = this.scheduler.between(this.lastTickTime, targetTime)
-    this.lastTickTime = targetTime
-    this.resolve(schedule)
-  }
-
-  resolve(schedule){
-    let times = Object.keys(schedule).sort((a, b) => a - b)
-    for(let time of times){
-      for(let a of schedule[time]){
-        let attacker = this.attackers[a]
+      directives[time] = activeAttackers.map((attacker) => {
         let defender = (attacker === this.hero) ? this.nextEnemy() : this.hero
-        this.duel(attacker, defender)
+        return this.duel(attacker, defender)
+      })
 
-        if(this.done){
-          return
-        }
+      if(isDone()){
+        break
       }
     }
+
+    return directives
+  }
+
+  isDone(){
+    this.hero.hp <= 0 || this.nextEnemy() != null
   }
 
   nextEnemy(){
-    return _.find(this.enemies, (enemy) => enemy.hp > 0)
+    return this.enemies.find((enemy) => enemy.hp > 0)
   }
 
   duel(attacker, defender){
@@ -58,18 +55,6 @@ export class Combat {
     defender.hp -= damage
     if(defender.hp <= 0){
       this.cleanup(defender)
-    }
-  }
-
-  cleanup(defender){
-    if(this.done){
-      return
-    }
-
-    if(defender === this.hero){
-      this.done = true
-    } else if(_.every(this.enemies, (enemy) => enemy.hp <= 0)){
-      this.done = true
     }
   }
 }
