@@ -11,29 +11,28 @@ export class Combat {
     this.enemies = enemies
   }
 
-  run*(){
-    let directives = {}
-    for(let [time, attackers] of createSchedule([hero, ...enemies])){
+  *run(){
+    for(let [time, attackers] of createSchedule([this.hero, ...this.enemies])){
       let activeAttackers = attackers.filter((attacker) => attacker.hp > 0)
       if(activeAttackers.length <= 0){
         continue
       }
 
-      directives[time] = activeAttackers.map((attacker) => {
+      let attacks = activeAttackers.map((attacker) => {
         let defender = (attacker === this.hero) ? this.nextEnemy() : this.hero
         return this.duel(attacker, defender)
       })
 
-      if(isDone()){
-        break
+      yield [time, attacks]
+
+      if(this.isDone()){
+        return
       }
     }
-
-    return directives
   }
 
   isDone(){
-    this.hero.hp <= 0 || this.nextEnemy() != null
+    return this.hero.hp <= 0 || this.nextEnemy() != null
   }
 
   nextEnemy(){
@@ -42,19 +41,8 @@ export class Combat {
 
   duel(attacker, defender){
     let duel = new Duel(attacker.stats, defender.stats)
-    let roll = Math.random()
-    if(roll < duel.hitPercent){
-      return
-    }
-
-    let damage = attacker.rollDamage() * duel.damageMultiplier
-    if(roll >= duel.critPercent){
-      damage *= duel.critMultiplier
-    }
-
+    let damage = duel.run(Math.random(), attacker.rollDamage())
     defender.hp -= damage
-    if(defender.hp <= 0){
-      this.cleanup(defender)
-    }
+    return { attacker, defender, damage }
   }
 }

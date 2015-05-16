@@ -4,27 +4,29 @@ import createSchedule from 'tc/core/combat/scheduler'
 
 describe('core/combat/scheduler', () => {
   it('schedules based on attackMspa', () => {
-    let schedule = createSchedule([
+    let attackers = [
       { attackMspa: 2000, initiative: 0 },
       { attackMspa: 3000, initiative: 0 },
-    ])
+    ]
+    let schedule = createSchedule(attackers)
 
-    expect(schedule).to.yield([   0, [0, 1]])
-    expect(schedule).to.yield([2000, [0]])
-    expect(schedule).to.yield([3000, [1]])
-    expect(schedule).to.yield([4000, [0]])
-    expect(schedule).to.yield([6000, [0, 1]])
+    expect(schedule).to.yield([   0, [attackers[0], attackers[1]]])
+    expect(schedule).to.yield([2000, [attackers[0]]])
+    expect(schedule).to.yield([3000, [attackers[1]]])
+    expect(schedule).to.yield([4000, [attackers[0]]])
+    expect(schedule).to.yield([6000, [attackers[0], attackers[1]]])
   })
 
   it('schedules initiative earlier', () => {
-    let schedule = createSchedule([
+    let attackers = [
       { attackMspa: 2000, initiative: 1 },
       { attackMspa: 3000, initiative: 2 },
-    ])
+    ]
+    let schedule = createSchedule(attackers)
 
-    expect(schedule).to.yield([  -2, [1]])
-    expect(schedule).to.yield([  -1, [0]])
-    expect(schedule).to.yield([1999, [0]])
-    expect(schedule).to.yield([2998, [1]])
+    expect(schedule).to.yield([  -2, [attackers[1]]])
+    expect(schedule).to.yield([  -1, [attackers[0]]])
+    expect(schedule).to.yield([1999, [attackers[0]]])
+    expect(schedule).to.yield([2998, [attackers[1]]])
   })
 })
