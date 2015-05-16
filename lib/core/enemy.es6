@@ -7,7 +7,7 @@ export function statValueForLevel(level){
 }
 
 export function statsForLevel(level){
-  return Stats.allAt(Enemy.statValueForLevel(level))
+  return Stats.allAt(statValueForLevel(level))
 }
 
 export default class Enemy {
