@@ -5,13 +5,13 @@ export default class Duel {
   }
 
   calculate(hitRoll, baseDamage){
-    if(hitRoll < this.hitPercent){
+    if(hitRoll > this.hitPercent){
       return null
     }
 
     let damage = baseDamage * this.damageMultiplier
 
-    if(hitRoll >= this.critPercent){
+    if(hitRoll < this.critPercent){
       damage *= this.critMultiplier
     }
 
@@ -19,11 +19,16 @@ export default class Duel {
   }
 
   get hitPercent(){
-    return Math.min(0.7 * this.attackerStats.accuracy / this.defenderStats.dodge, 1)
+    return Math.min(1, this.attackerStats.accuracy / this.defenderStats.dodge)
   }
 
   get critPercent(){
-    return 1
+    let hitOverflow = this.attackerStats.accuracy - this.defenderStats.dodge
+    if(hitOverflow > 0){
+      return Math.min(1, 0.1 + hitOverflow / this.defenderStats.dodge)
+    } else {
+      return 0.1 * this.attackerStats.accuracy / this.defenderStats.dodge
+    }
   }
 
   get damageMultiplier(){
