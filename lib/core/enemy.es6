@@ -13,6 +13,8 @@ export function statsForLevel(level){
 export default class Enemy {
   constructor(level){
     this.stats = statsForLevel(level)
+    this.attackMspa = 1000
+    this.initiative = 0
   }
 
   rollDamage(){

@@ -4,8 +4,9 @@ import chaiProperties from 'chai-properties'
 import chaiGenerator from 'chai-generator'
 
 chai
-  .use(dirtyChai)
   .use(chaiProperties)
   .use(chaiGenerator)
+  // TODO: dirty-chai kills the .not chain
+  .use(dirtyChai)
 
 export { expect } from 'chai'
