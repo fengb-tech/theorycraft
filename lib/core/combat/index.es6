@@ -37,7 +37,7 @@ export class Combat {
   }
 
   isDone(){
-    return this.hero.hp <= 0 || this.nextEnemy() == null
+    return this.nextEnemy() == null
   }
 
   defenderOf(attacker){

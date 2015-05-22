@@ -11,13 +11,8 @@ describe('tc/core/combat', () => {
   })
 
   describe('#isDone', () => {
-    it('is false if hero has hp and has enemy', function(){
+    it('is false if active enemies', function(){
       expect(this.combat.isDone()).to.be.false()
-    })
-
-    it('is true if hero has no hp', function(){
-      this.hero.hp = 0
-      expect(this.combat.isDone()).to.be.true()
     })
 
     it('is true if no enemy has hp', function(){
