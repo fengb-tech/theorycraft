@@ -5,7 +5,7 @@ import { Combat } from 'tc/core/combat'
 
 describe('tc/core/combat', () => {
   beforeEach(function(){
-    this.hero = { hp: 1 }
+    this.hero = { hero: true, hp: 1 }
     this.enemy = { hp: 1 }
     this.combat = new Combat(this.hero, [this.enemy])
   })
@@ -37,15 +37,16 @@ describe('tc/core/combat', () => {
     })
 
     it('duels for scheduled attackers', function(){
-      let enemy = { hp: 1 }
-      this.combat.schedule.push([10, [this.hero, enemy]])
-      expect(this.combatRunner).to.deep.yield([10, [this.hero, enemy]])
+      this.combat.schedule.push([10, [this.hero, this.enemy]])
+      expect(this.combatRunner).to.deep.yield([10, this.hero])
+      expect(this.combatRunner).to.deep.yield([10, this.enemy])
     })
 
     it('ignores attackers with no hp', function(){
-      let enemy = { hp: 0 }
-      this.combat.schedule.push([10, [this.hero, enemy]])
-      expect(this.combatRunner).to.deep.yield([10, [this.hero]])
+      this.enemy = { hp: 0 }
+      this.combat.schedule.push([10, [this.hero, this.enemy]])
+      expect(this.combatRunner).to.deep.yield([10, this.hero])
+      expect(this.combatRunner).not.to.deep.yield([10, this.enemy])
     })
 
     describe('when isDone = true', () => {

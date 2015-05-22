@@ -18,14 +18,13 @@ export class Combat {
         break
       }
 
-      let activeAttackers = attackers.filter((attacker) => attacker.hp > 0)
-      if(activeAttackers.length <= 0){
-        continue
+      for(let attacker of attackers){
+        if(attacker.hp <= 0){
+          continue
+        }
+
+        yield [time, this.duelFor(attacker)]
       }
-
-      let attacks = activeAttackers.map((attacker) => this.duelFor(attacker))
-
-      yield [time, attacks]
     }
 
     let cleanup = this.cleanup()
