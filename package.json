@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "chai": "^2.3.0",
-    "chai-generator": "^1.0.1",
+    "chai-generator": "^2.0.0",
     "chai-properties": "^1.2.0",
     "dirty-chai": "^1.2.1",
     "gulp": "^3.8.11",

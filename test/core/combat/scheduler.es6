@@ -10,11 +10,11 @@ describe('core/combat/scheduler', () => {
     ]
     let schedule = createSchedule(attackers)
 
-    expect(schedule).to.yield([   0, [attackers[0], attackers[1]]])
-    expect(schedule).to.yield([2000, [attackers[0]]])
-    expect(schedule).to.yield([3000, [attackers[1]]])
-    expect(schedule).to.yield([4000, [attackers[0]]])
-    expect(schedule).to.yield([6000, [attackers[0], attackers[1]]])
+    expect(schedule).to.deep.yield([   0, [attackers[0], attackers[1]]])
+    expect(schedule).to.deep.yield([2000, [attackers[0]]])
+    expect(schedule).to.deep.yield([3000, [attackers[1]]])
+    expect(schedule).to.deep.yield([4000, [attackers[0]]])
+    expect(schedule).to.deep.yield([6000, [attackers[0], attackers[1]]])
   })
 
   it('schedules initiative earlier', () => {
@@ -24,9 +24,9 @@ describe('core/combat/scheduler', () => {
     ]
     let schedule = createSchedule(attackers)
 
-    expect(schedule).to.yield([  -2, [attackers[1]]])
-    expect(schedule).to.yield([  -1, [attackers[0]]])
-    expect(schedule).to.yield([1999, [attackers[0]]])
-    expect(schedule).to.yield([2998, [attackers[1]]])
+    expect(schedule).to.deep.yield([  -2, [attackers[1]]])
+    expect(schedule).to.deep.yield([  -1, [attackers[0]]])
+    expect(schedule).to.deep.yield([1999, [attackers[0]]])
+    expect(schedule).to.deep.yield([2998, [attackers[1]]])
   })
 })

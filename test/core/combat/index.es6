@@ -40,13 +40,13 @@ describe('tc/core/combat', () => {
     it('duels for scheduled attackers', function(){
       let enemy = { hp: 1 }
       this.combat.schedule.push([10, [this.hero, enemy]])
-      expect(this.combatRunner).to.yield([10, [this.hero, enemy]])
+      expect(this.combatRunner).to.deep.yield([10, [this.hero, enemy]])
     })
 
     it('ignores attackers with no hp', function(){
       let enemy = { hp: 0 }
       this.combat.schedule.push([10, [this.hero, enemy]])
-      expect(this.combatRunner).to.yield([10, [this.hero]])
+      expect(this.combatRunner).to.deep.yield([10, [this.hero]])
     })
 
     describe('when isDone = true', () => {
