@@ -23,17 +23,17 @@ export class Combat {
           continue
         }
 
-        yield [time, this.duelFor(attacker)]
+        yield [time, this.processAttack(attacker)]
       }
     }
 
-    let cleanup = this.cleanup()
-    if(cleanup != null){
-      yield cleanup
+    for(let directive of this.processCleanup()){
+      yield directive
     }
   }
 
-  cleanup(){
+  processCleanup(){
+    return []
   }
 
   isDone(){
@@ -48,7 +48,7 @@ export class Combat {
     return this.enemies.find((enemy) => enemy.hp > 0)
   }
 
-  duelFor(attacker){
+  processAttack(attacker){
     let defender = this.defenderOf(attacker)
     let duel = new Duel(attacker.stats, defender.stats)
     let damage = duel.run(Math.random(), attacker.rollDamage())

@@ -26,7 +26,7 @@ describe('tc/core/combat', () => {
       _.extend(this.combat, {
         schedule: [],
         isdone: () => false,
-        duelFor: (attacker) => attacker
+        processAttack: (attacker) => attacker
       })
       this.combatRunner = this.combat.run()
     })
@@ -49,8 +49,8 @@ describe('tc/core/combat', () => {
         this.combat.isDone = () => true
       })
 
-      it('yields cleanup() and return', function(){
-        this.combat.cleanup = () => 'foobar!'
+      it('yields processCleanup() and return', function(){
+        this.combat.processCleanup = () => ['foobar!']
         expect(this.combatRunner).to.yield('foobar!')
         expect(this.combatRunner).to.return()
       })
