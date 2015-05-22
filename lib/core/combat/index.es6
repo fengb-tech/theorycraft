@@ -2,7 +2,7 @@ import createSchedule from './scheduler'
 import Duel from './duel'
 
 export default function combat(hero, enemies){
-  return new Combat(hero, enemies).run()
+  return Array.from(new Combat(hero, enemies).run())
 }
 
 export class Combat {
@@ -15,7 +15,7 @@ export class Combat {
   *run(){
     for(let [time, attackers] of this.schedule){
       if(this.isDone()){
-        return
+        break
       }
 
       let activeAttackers = attackers.filter((attacker) => attacker.hp > 0)
@@ -27,10 +27,18 @@ export class Combat {
 
       yield [time, attacks]
     }
+
+    let cleanup = this.cleanup()
+    if(cleanup != null){
+      yield cleanup
+    }
+  }
+
+  cleanup(){
   }
 
   isDone(){
-    return this.hero.hp <= 0 || this.nextEnemy() != null
+    return this.hero.hp <= 0 || this.nextEnemy() == null
   }
 
   defenderOf(attacker){
