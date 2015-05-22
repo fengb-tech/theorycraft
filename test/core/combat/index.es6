@@ -4,13 +4,13 @@ import { expect } from 'tc-test/support'
 import { Combat } from 'tc/core/combat'
 
 describe('tc/core/combat', () => {
-  describe('#isDone', () => {
-    beforeEach(function(){
-      this.hero = { hp: 1 }
-      this.enemy = { hp: 1 }
-      this.combat = new Combat(this.hero, [this.enemy])
-    })
+  beforeEach(function(){
+    this.hero = { hp: 1 }
+    this.enemy = { hp: 1 }
+    this.combat = new Combat(this.hero, [this.enemy])
+  })
 
+  describe('#isDone', () => {
     it('is false if hero has hp and has enemy', function(){
       expect(this.combat.isDone()).to.be.false()
     })
@@ -28,10 +28,9 @@ describe('tc/core/combat', () => {
 
   describe('#run', () => {
     beforeEach(function(){
-      this.hero = { hp: 1 }
-      this.combat = _.extend(new Combat(this.hero, []), {
+      _.extend(this.combat, {
         schedule: [],
-        isDone: () => false,
+        isdone: () => false,
         duelFor: (attacker) => attacker
       })
       this.combatRunner = this.combat.run()
