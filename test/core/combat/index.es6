@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import { expect } from 'tc-test/support'
 import { Combat } from 'tc/core/combat'
-import { endless } from 'tc/util/generators'
+import endlessGenerator from 'endless-generator'
 
 describe('tc/core/combat', () => {
   beforeEach(function(){
@@ -46,7 +46,7 @@ describe('tc/core/combat', () => {
     })
 
     it('terminates when taking too long', function(){
-      this.combat.schedule = endless([0, []])
+      this.combat.schedule = endlessGenerator([0, []])
       expect(() => this.combat.run()).to.throw(RangeError)
     })
 
