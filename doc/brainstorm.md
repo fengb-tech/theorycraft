@@ -53,15 +53,21 @@ After hit percent is maxed, accuracy adds to crit percent.
 
 ## Gear
 
-* Rarity governs stat quality: [WoW]
-  * -10L - gray
-  *  -5L - white
-  *  +0L - green
-  *  +5L - blue
-  * +10L - purple
-  * +20L - orange
-* Gear has specific focuses:
-  * Weapon - power
+* Rarity governs total enchantments: [WoW]
+  * 1 - white
+  * 2 - green
+  * 3 - blue
+  * 4 - purple
+  * 5 - orange
+* Each enchantment channels 2 stats. Doubling up is allowed.
+* Rare enchantment channels 3 stats. Tripling up is allowed. Higher chance at spawn.
+* Channeling the same stat has a diminishing effect
+* Items have different stat focuses - bonus to stat + guaranteed enchantment with stat:
+  * Weapon 1 - Power (e.g. saber)
+  * Weapon 2 - Accuracy (e.g. rapier)
+  * Weapon 3 - Critical (e.g. axe)
   * Shield - dodge
   * Body Armor - armor
   * Helm - resilience
+* Enchantments can be rerolled at a cost, including the focused enchantment.
+* Items can be power infused: increased item level.  Successive power infusions becomes prohibitively expensive.
