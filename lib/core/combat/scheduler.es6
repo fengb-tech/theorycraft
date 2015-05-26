@@ -1,4 +1,10 @@
+import * as sanity from 'tc/util/sanity'
+
 export default function *createSchedule(attackers){
+  sanity.notEmpty(attackers)
+  sanity.allHaveProperty(attackers, 'attackMspa', Number)
+  sanity.allHaveProperty(attackers, 'initiative', Number)
+
   let nextTimes = attackers.map((attacker) => 0 - attacker.initiative)
 
   while(true){

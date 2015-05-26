@@ -2,6 +2,7 @@ import _ from 'lodash'
 
 import { expect } from 'tc-test/support'
 import { Combat } from 'tc/core/combat'
+import { endless } from 'tc/util/generators'
 
 describe('tc/core/combat', () => {
   beforeEach(function(){
@@ -21,14 +22,14 @@ describe('tc/core/combat', () => {
     })
   })
 
-  describe('#run', () => {
+  describe('#runner', () => {
     beforeEach(function(){
       _.extend(this.combat, {
         schedule: [],
         isdone: () => false,
         processAttack: (attacker) => attacker
       })
-      this.combatRunner = this.combat.run()
+      this.combatRunner = this.combat.runner()
     })
 
     it('duels for scheduled attackers', function(){
@@ -42,6 +43,11 @@ describe('tc/core/combat', () => {
       this.combat.schedule.push([10, [this.hero, this.enemy]])
       expect(this.combatRunner).to.deep.yield([10, this.hero])
       expect(this.combatRunner).not.to.deep.yield([10, this.enemy])
+    })
+
+    it('terminates when taking too long', function(){
+      this.combat.schedule = endless([0, []])
+      expect(() => this.combat.run()).to.throw(RangeError)
     })
 
     describe('when isDone = true', () => {

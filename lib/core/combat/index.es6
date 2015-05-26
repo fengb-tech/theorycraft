@@ -1,8 +1,10 @@
 import createSchedule from './scheduler'
 import Duel from './duel'
 
+const ITERATION_OVERFLOW = 1000
+
 export default function combat(hero, enemies){
-  return Array.from(new Combat(hero, enemies).run())
+  return new Combat(hero, enemies).run()
 }
 
 export class Combat {
@@ -12,8 +14,20 @@ export class Combat {
     this.schedule = createSchedule([this.hero, ...this.enemies])
   }
 
-  *run(){
+  run(){
+    if(!this._run){
+      this._run = Array.from(this.runner())
+    }
+    return this._run
+  }
+
+  *runner(){
+    let iterations = 0
     for(let [time, attackers] of this.schedule){
+      if(++iterations > ITERATION_OVERFLOW){
+        throw new RangeError(`Too many iterations: ${iterations}`)
+      }
+
       if(this.isDone()){
         break
       }

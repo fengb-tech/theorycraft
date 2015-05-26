@@ -29,4 +29,21 @@ describe('core/combat/scheduler', () => {
     expect(schedule).to.deep.yield([1999, [attackers[0]]])
     expect(schedule).to.deep.yield([2998, [attackers[1]]])
   })
+
+  describe('bad input', () => {
+    it('dies if no attackers', () => {
+      let schedule = createSchedule()
+      expect(() => schedule.next()).to.throw(TypeError)
+    })
+
+    it('dies if attacker has no attackMspa', () => {
+      let schedule = createSchedule([{ initiative: 0 }])
+      expect(() => schedule.next()).to.throw(TypeError)
+    })
+
+    it('dies if attacker has no initiative', () => {
+      let schedule = createSchedule([{ attackMspa: 1000 }])
+      expect(() => schedule.next()).to.throw(TypeError)
+    })
+  })
 })
