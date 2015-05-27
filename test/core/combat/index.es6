@@ -6,8 +6,8 @@ import endlessGenerator from 'endless-generator'
 
 describe('tc/core/combat', () => {
   beforeEach(function(){
-    this.hero = { hero: true, hp: 1 }
-    this.enemy = { hp: 1 }
+    this.hero = { type: 'hero' }
+    this.enemy = { type: 'enemy' }
     this.combat = new Combat(this.hero, [this.enemy])
   })
 
@@ -16,7 +16,8 @@ describe('tc/core/combat', () => {
       expect(this.combat.isDone()).to.be.false()
     })
 
-    it('is true if no enemy has hp', function(){
+    it('is true if enemies are killed', function(){
+      this.combat.kill(this.enemy)
       this.enemy.hp = 0
       expect(this.combat.isDone()).to.be.true()
     })
@@ -26,7 +27,7 @@ describe('tc/core/combat', () => {
     beforeEach(function(){
       _.extend(this.combat, {
         schedule: [],
-        isdone: () => false,
+        isDone: () => false,
         processAttack: (attacker) => attacker
       })
       this.combatRunner = this.combat.runner()
@@ -39,7 +40,7 @@ describe('tc/core/combat', () => {
     })
 
     it('ignores attackers with no hp', function(){
-      this.enemy = { hp: 0 }
+      this.combat.kill(this.enemy)
       this.combat.schedule.push([10, [this.hero, this.enemy]])
       expect(this.combatRunner).to.deep.yield([10, this.hero])
       expect(this.combatRunner).not.to.deep.yield([10, this.enemy])

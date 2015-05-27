@@ -1,17 +1,26 @@
 import createSchedule from './scheduler'
 import Duel from './duel'
+import Enemy from 'tc/core/enemy'
 
 const ITERATION_OVERFLOW = 1000
 
-export default function combat(hero, enemies){
-  return new Combat(hero, enemies).run()
+export default function combat(hero){
+  let enemy = new Enemy(1)
+  return new Combat(hero, [enemy]).run()
 }
 
 export class Combat {
   constructor(hero, enemies){
     this.hero = hero
     this.enemies = enemies
-    this.schedule = createSchedule([this.hero, ...this.enemies])
+
+    let chars = [hero, ...enemies]
+    this.schedule = createSchedule(chars)
+
+    this._hps = new Map()
+    for(let char of chars){
+      this._hps.set(char, 10000)
+    }
   }
 
   run(){
@@ -33,11 +42,9 @@ export class Combat {
       }
 
       for(let attacker of attackers){
-        if(attacker.hp <= 0){
-          continue
+        if(this._hps.get(attacker) > 0){
+          yield [time, this.processAttack(attacker)]
         }
-
-        yield [time, this.processAttack(attacker)]
       }
     }
 
@@ -50,6 +57,10 @@ export class Combat {
     return []
   }
 
+  kill(char){
+    this._hps.set(char, 0)
+  }
+
   isDone(){
     return this.nextEnemy() == null
   }
@@ -59,13 +70,13 @@ export class Combat {
   }
 
   nextEnemy(){
-    return this.enemies.find((enemy) => enemy.hp > 0)
+    return this.enemies.find((enemy) => this._hps.get(enemy) > 0)
   }
 
   processAttack(attacker){
     let defender = this.defenderOf(attacker)
     let duel = new Duel(attacker.stats, defender.stats)
-    let damage = duel.run(Math.random(), attacker.rollDamage())
+    let damage = duel.calculate(Math.random(), attacker.rollDamage())
     defender.hp -= damage
     return { attacker, defender, damage }
   }
