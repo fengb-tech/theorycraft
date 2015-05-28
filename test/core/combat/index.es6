@@ -27,7 +27,7 @@ describe('tc/core/combat', () => {
       _.extend(this.combat, {
         schedule: [],
         isDone: () => false,
-        processAttack: (attacker) => attacker
+        processAttack: (...args) => args
       })
       this.combatRunner = this.combat.runner()
     })

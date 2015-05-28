@@ -48,7 +48,7 @@ module.exports = class Combat {
 
       for(let attacker of attackers){
         if(this._hps.get(attacker) > 0){
-          yield [time, this.processAttack(attacker)]
+          yield this.processAttack(time, attacker)
         }
       }
     }
@@ -78,13 +78,13 @@ module.exports = class Combat {
     return this.enemies.find((enemy) => this._hps.get(enemy) > 0)
   }
 
-  processAttack(attacker){
+  processAttack(time, attacker){
     let defender = this.defenderOf(attacker)
     let duel = new Duel(attacker.stats, defender.stats)
     let damage = duel.calculate(Math.random(), attacker.rollDamage())
 
     this.processDamage(defender, damage)
-    return { attacker, defender, damage }
+    return [time, 'attack', attacker, defender, damage]
   }
 
   processDamage(defender, damage){
