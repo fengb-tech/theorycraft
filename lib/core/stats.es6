@@ -18,10 +18,10 @@ let Stats = module.exports = class Stats {
   }
 
   static mergeAll(array){
-    let mergedStats = new Stats(array[0])
+    let mergedStats = new Stats()
 
-    for(let i = 1; i < array.length; i++){
-      mergedStats.merge(array[i])
+    for(let stat of array){
+      mergedStats.merge(stat)
     }
 
     return mergedStats
@@ -41,7 +41,7 @@ let Stats = module.exports = class Stats {
   }
 
   clone(){
-    new Stats(this)
+    return new Stats(this)
   }
 }
 

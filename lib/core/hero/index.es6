@@ -15,6 +15,14 @@ module.exports = class Hero {
     this.base.xp += xp
   }
 
+  get initiative(){
+    return 0
+  }
+
+  get attackDelay(){
+    return this.equipment.attackDelay
+  }
+
   rollDamage(){
     return this.equipment.rollDamage()
   }

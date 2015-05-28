@@ -25,7 +25,9 @@ module.exports = class Combat {
 
   run(){
     if(!this._run){
+      Combat._current = this
       this._run = Array.from(this.runner())
+      Combat._current = null
     }
     return this._run
   }
@@ -77,7 +79,9 @@ module.exports = class Combat {
     let defender = this.defenderOf(attacker)
     let duel = new Duel(attacker.stats, defender.stats)
     let damage = duel.calculate(Math.random(), attacker.rollDamage())
-    defender.hp -= damage
+
+    let hp = this._hps.get(defender)
+    this._hps.set(defender, hp - damage)
     return { attacker, defender, damage }
   }
 }

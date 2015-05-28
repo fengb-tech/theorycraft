@@ -2,7 +2,7 @@ let _ = require('lodash')
 
 let Stats = require('tc/core/stats')
 let Item = require('tc/core/item')
-let random = require('tc/util/random')
+let Random = require('tc/util/random')
 
 module.exports = class Equipment {
   constructor(){
@@ -11,12 +11,33 @@ module.exports = class Equipment {
     }
   }
 
+  get items(){
+    return _(Item.TYPES)
+             .map((type) => this[type])
+             .compact()
+             .value()
+  }
+
   get stats(){
-    let itemStatses = _.map(Item.TYPES, (type) => this[type].stats)
+    let itemStatses = _.map(this.items, (item) => item.stats)
     return Stats.mergeAll(itemStatses)
   }
 
+  get attackDelay(){
+    if(this.weapon){
+      return this.weapon.attackDelay
+    } else {
+      // FIXME: magic numbers
+      return 1000
+    }
+  }
+
   rollDamage(){
-    return random.int(this.weapon.minDamage, this.weapon.maxDamage)
+    if(this.weapon){
+      return Random.int(this.weapon.minDamage, this.weapon.maxDamage)
+    } else {
+      // FIXME: magic numbers
+      return 100
+    }
   }
 }

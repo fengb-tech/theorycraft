@@ -18,7 +18,6 @@ describe('tc/core/combat', () => {
 
     it('is true if enemies are killed', function(){
       this.combat.kill(this.enemy)
-      this.enemy.hp = 0
       expect(this.combat.isDone()).to.be.true()
     })
   })
@@ -46,9 +45,10 @@ describe('tc/core/combat', () => {
       expect(this.combatRunner).not.to.deep.yield([10, this.enemy])
     })
 
-    it('terminates when taking too long', function(){
+    it('terminates and saves the run state when taking too long', function(){
       this.combat.schedule = endlessGenerator([0, []])
       expect(() => this.combat.run()).to.throw(RangeError)
+      expect(Combat._current).to.be.instanceof(Combat)
     })
 
     describe('when isDone = true', () => {
