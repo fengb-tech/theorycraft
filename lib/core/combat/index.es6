@@ -2,7 +2,8 @@ let createSchedule = require('./scheduler')
 let Duel = require('./duel')
 let Enemy = require('tc/core/enemy')
 
-const ITERATION_OVERFLOW = 1000
+const MS_OVERFLOW = 100
+const FULL_HP = 10000
 
 module.exports = class Combat {
   constructor(hero, enemies){
@@ -14,7 +15,7 @@ module.exports = class Combat {
 
     this._hps = new Map()
     for(let char of chars){
-      this._hps.set(char, 10000)
+      this._hps.set(char, FULL_HP)
     }
   }
 
@@ -33,10 +34,12 @@ module.exports = class Combat {
   }
 
   *runner(){
-    let iterations = 0
+    let startMs = new Date().valueOf()
+
     for(let [time, attackers] of this.schedule){
-      if(++iterations > ITERATION_OVERFLOW){
-        throw new RangeError(`Too many iterations: ${iterations}`)
+      let duration = new Date() - startMs
+      if(duration >= MS_OVERFLOW){
+        throw new RangeError(`Timeout: ${duration}ms`)
       }
 
       if(this.isDone()){
@@ -80,8 +83,19 @@ module.exports = class Combat {
     let duel = new Duel(attacker.stats, defender.stats)
     let damage = duel.calculate(Math.random(), attacker.rollDamage())
 
-    let hp = this._hps.get(defender)
-    this._hps.set(defender, hp - damage)
+    this.processDamage(defender, damage)
     return { attacker, defender, damage }
+  }
+
+  processDamage(defender, damage){
+    let hp = this._hps.get(defender) - damage
+    if(hp > 0){
+      this._hps.set(defender, hp)
+    } else if(defender === this.hero){
+      // TODO: real recovery
+      this._hps.set(defender, FULL_HP)
+    } else {
+      this.kill(defender)
+    }
   }
 }
