@@ -1,6 +1,6 @@
-import * as sanity from 'tc/util/sanity'
+let sanity = require('tc/util/sanity')
 
-export default function *createSchedule(attackers){
+module.exports = function* createSchedule(attackers){
   sanity.notEmpty(attackers)
   sanity.allHaveProperty(attackers, 'attackMspa', Number)
   sanity.allHaveProperty(attackers, 'initiative', Number)

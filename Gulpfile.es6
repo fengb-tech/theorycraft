@@ -1,8 +1,8 @@
-import gulp from 'gulp'
-import jshint from 'gulp-jshint'
-import mocha from 'gulp-mocha'
-import print from 'gulp-print'
-import _ from 'lodash'
+let gulp = require('gulp')
+let jshint = require('gulp-jshint')
+let mocha = require('gulp-mocha')
+let gprint = require('gulp-print')
+let _ = require('lodash')
 
 let paths = {
   meta: ['.jshintrc', '*.{js,json,es6}'],
@@ -13,7 +13,7 @@ paths.all = _(paths).values().flatten().value()
 
 gulp.task('files', () => {
   return gulp.src(paths.all)
-        .pipe(print())
+        .pipe(gprint())
 })
 
 gulp.task('lint', () => {

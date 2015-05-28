@@ -1,6 +1,6 @@
-import { expect } from 'tc-test/support'
-import Base from 'tc/core/hero/base'
-import { statsForLevel, levelForXp } from 'tc/core/hero/base'
+let expect = require('tc-test/support').expect
+
+let Base = require('tc/core/hero/base')
 
 describe('core/hero/base', () => {
   describe('Base', () => {
@@ -15,20 +15,20 @@ describe('core/hero/base', () => {
 
   describe('levelForXp()', () => {
     it('returns 1 for xp=0', () => {
-      let target = levelForXp(0)
+      let target = Base.levelForXp(0)
       expect(target).to.equal(1)
     })
   })
 
   describe('statsForLevel()', () => {
     it('has correct stats', () => {
-      let stats = statsForLevel(1)
+      let stats = Base.statsForLevel(1)
       expect(stats.power).to.equal(100)
 
-      stats = statsForLevel(2)
+      stats = Base.statsForLevel(2)
       expect(stats.power).to.equal(105)
 
-      stats = statsForLevel(10)
+      stats = Base.statsForLevel(10)
       expect(stats.power).to.equal(155)
     })
   })

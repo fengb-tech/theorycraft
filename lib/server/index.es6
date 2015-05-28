@@ -1,9 +1,6 @@
-import koa from 'koa'
-import logger from 'koa-logger'
-import router from './router'
+let koa = require('koa')
 
-var app = koa()
-export default app
-
-app.use(logger())
-app.use(router.routes())
+module.exports =
+  koa()
+    .use(require('./logger'))
+    .use(require('./routes'))

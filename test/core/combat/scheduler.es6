@@ -1,6 +1,6 @@
-import { expect } from 'tc-test/support'
+let expect = require('tc-test/support').expect
 
-import createSchedule from 'tc/core/combat/scheduler'
+let createSchedule = require('tc/core/combat/scheduler')
 
 describe('core/combat/scheduler', () => {
   it('schedules based on attackMspa', () => {

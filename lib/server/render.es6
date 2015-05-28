@@ -1,9 +1,7 @@
-import MarkdownIt from 'markdown-it'
-import fs from 'mz/fs'
+let fs = require('mz/fs')
+let markdown = new require('markdown-it')()
 
-var markdown = new MarkdownIt()
-
-export function markdownFile(filename, options = {}){
+exports.markdownFile = function markdownFile(filename, options = {}){
   return function *(next){
     let content = yield fs.readFile(filename, 'utf8')
     this.body = markdown.render(content)

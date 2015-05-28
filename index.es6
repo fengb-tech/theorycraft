@@ -1,4 +1,4 @@
-import app from 'tc/server'
+let app = require('tc/server')
 
 const port = Number(process.env.PORT || 5000)
 

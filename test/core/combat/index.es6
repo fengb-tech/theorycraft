@@ -1,8 +1,8 @@
-import _ from 'lodash'
+let _ = require('lodash')
+let endlessGenerator = require('endless-generator')
+let expect = require('tc-test/support').expect
 
-import { expect } from 'tc-test/support'
-import { Combat } from 'tc/core/combat'
-import endlessGenerator from 'endless-generator'
+let Combat = require('tc/core/combat')
 
 describe('tc/core/combat', () => {
   beforeEach(function(){

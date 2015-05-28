@@ -1,15 +1,10 @@
-import createSchedule from './scheduler'
-import Duel from './duel'
-import Enemy from 'tc/core/enemy'
+let createSchedule = require('./scheduler')
+let Duel = require('./duel')
+let Enemy = require('tc/core/enemy')
 
 const ITERATION_OVERFLOW = 1000
 
-export default function combat(hero){
-  let enemy = new Enemy(1)
-  return new Combat(hero, [enemy]).run()
-}
-
-export class Combat {
+module.exports = class Combat {
   constructor(hero, enemies){
     this.hero = hero
     this.enemies = enemies
@@ -21,6 +16,11 @@ export class Combat {
     for(let char of chars){
       this._hps.set(char, 10000)
     }
+  }
+
+  static run(hero){
+    let enemy = new Enemy(1)
+    return new Combat(hero, [enemy]).run()
   }
 
   run(){

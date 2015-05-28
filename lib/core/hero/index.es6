@@ -1,7 +1,7 @@
-import Equipment from './equipment'
-import Base from './base'
+let Equipment = require('./equipment')
+let Base = require('./base')
 
-export default class Hero {
+module.exports = class Hero {
   constructor(){
     this.base = new Base(0)
     this.equipment = new Equipment()

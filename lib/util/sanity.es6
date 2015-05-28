@@ -1,12 +1,14 @@
-import _ from 'lodash'
+let _ = require('lodash')
 
-export function notEmpty(value){
+let sanity = exports
+
+sanity.notEmpty = function notEmpty(value){
   if(_.isEmpty(value)){
     throw new TypeError('${value} must not be empty')
   }
 }
 
-export function haveType(value, type, messenger){
+sanity.haveType = function haveType(value, type, messenger){
   if(!messenger){
     messenger = () => `${value} must have type ${type.name}`
   }
@@ -30,8 +32,8 @@ export function haveType(value, type, messenger){
   }
 }
 
-export function allHaveProperty(array, property, type){
+sanity.allHaveProperty = function allHaveProperty(array, property, type){
   _.forEach(array, (element) => {
-    haveType(element[property], type, () => `${element} must have ${property} of type ${type.name}`)
+    sanity.haveType(element[property], type, () => `${element} must have ${property} of type ${type.name}`)
   })
 }

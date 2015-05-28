@@ -1,4 +1,4 @@
-export default class Stats {
+let Stats = module.exports = class Stats {
   constructor(object = {}){
     for(let statName of Stats.TYPES){
       this[statName] = object[statName] | 0

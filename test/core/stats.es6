@@ -1,6 +1,6 @@
-import { expect } from 'tc-test/support'
+let expect = require('tc-test/support').expect
 
-import Stats from 'tc/core/stats'
+let Stats = require('tc/core/stats')
 
 describe('Stats', () => {
   describe('constructor', () => {

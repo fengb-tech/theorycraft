@@ -1,12 +1,9 @@
-import chai from 'chai'
-import dirtyChai from 'dirty-chai'
-import chaiProperties from 'chai-properties'
-import chaiGenerator from 'chai-generator'
+let chai = require('chai')
 
 chai
-  .use(chaiProperties)
-  .use(chaiGenerator)
+  .use(require('chai-properties'))
+  .use(require('chai-generator'))
   // TODO: dirty-chai kills the .not chain
-  .use(dirtyChai)
+  .use(require('dirty-chai'))
 
-export { expect } from 'chai'
+exports.expect = chai.expect

@@ -1,4 +1,4 @@
-export default class Duel {
+module.exports = class Duel {
   constructor(attackerStats, defenderStats){
     this.attackerStats = attackerStats
     this.defenderStats = defenderStats

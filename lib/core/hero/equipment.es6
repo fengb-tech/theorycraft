@@ -1,10 +1,10 @@
-import _ from 'lodash'
+let _ = require('lodash')
 
-import Stats from 'tc/core/stats'
-import Item from 'tc/core/item'
-import { randomInt } from 'tc/util/random'
+let Stats = require('tc/core/stats')
+let Item = require('tc/core/item')
+let random = require('tc/util/random')
 
-export default class Equipment {
+module.exports = class Equipment {
   constructor(){
     for(let itemType of Item.TYPES){
       this[itemType] = null
@@ -17,6 +17,6 @@ export default class Equipment {
   }
 
   rollDamage(){
-    return randomInt(this.weapon.minDamage, this.weapon.maxDamage)
+    return random.int(this.weapon.minDamage, this.weapon.maxDamage)
   }
 }

@@ -1,23 +1,23 @@
-import { statValueForLevel as heroStatValueForLevel } from 'tc/core/hero/base'
-import { randomInt } from 'tc/util/random'
-import Stats from 'tc/core/stats'
+let Hero = require('tc/core/hero/base')
+let random = require('tc/util/random')
+let Stats = require('tc/core/stats')
 
-export function statValueForLevel(level){
-  return 2 * heroStatValueForLevel(level)
-}
-
-export function statsForLevel(level){
-  return Stats.allAt(statValueForLevel(level))
-}
-
-export default class Enemy {
+module.exports = class Enemy {
   constructor(level){
-    this.stats = statsForLevel(level)
+    this.stats = Enemy.statsForLevel(level)
     this.attackMspa = 1000
     this.initiative = 0
   }
 
+  static statValueForLevel(level){
+    return 2 * Hero.statValueForLevel(level)
+  }
+
+  static statsForLevel(level){
+    return Stats.allAt(Enemy.statValueForLevel(level))
+  }
+
   rollDamage(){
-    return randomInt(100, 200)
+    return random.int(100, 200)
   }
 }
