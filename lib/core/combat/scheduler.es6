@@ -2,7 +2,7 @@ let sanity = require('tc/util/sanity')
 
 module.exports = function* createSchedule(attackers){
   sanity.notEmpty(attackers)
-  sanity.allHaveProperty(attackers, 'attackMspa', Number)
+  sanity.allHaveProperty(attackers, 'attackDelay', Number)
   sanity.allHaveProperty(attackers, 'initiative', Number)
 
   let nextTimes = attackers.map((attacker) => 0 - attacker.initiative)
@@ -15,7 +15,7 @@ module.exports = function* createSchedule(attackers){
       if(nextTimes[i] === time){
         let attacker = attackers[i]
         cycle.push(attacker)
-        nextTimes[i] += attacker.attackMspa
+        nextTimes[i] += attacker.attackDelay
       }
     }
     yield [time, cycle]

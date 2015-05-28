@@ -5,7 +5,7 @@ let Stats = require('tc/core/stats')
 module.exports = class Enemy {
   constructor(level){
     this.stats = Enemy.statsForLevel(level)
-    this.attackMspa = 1000
+    this.attackDelay = 1000
     this.initiative = 0
   }
 

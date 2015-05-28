@@ -3,10 +3,10 @@ let expect = require('tc-test/support').expect
 let createSchedule = require('tc/core/combat/scheduler')
 
 describe('core/combat/scheduler', () => {
-  it('schedules based on attackMspa', () => {
+  it('schedules based on attackDelay', () => {
     let attackers = [
-      { attackMspa: 2000, initiative: 0 },
-      { attackMspa: 3000, initiative: 0 },
+      { attackDelay: 2000, initiative: 0 },
+      { attackDelay: 3000, initiative: 0 },
     ]
     let schedule = createSchedule(attackers)
 
@@ -19,8 +19,8 @@ describe('core/combat/scheduler', () => {
 
   it('schedules initiative earlier', () => {
     let attackers = [
-      { attackMspa: 2000, initiative: 1 },
-      { attackMspa: 3000, initiative: 2 },
+      { attackDelay: 2000, initiative: 1 },
+      { attackDelay: 3000, initiative: 2 },
     ]
     let schedule = createSchedule(attackers)
 
@@ -36,13 +36,13 @@ describe('core/combat/scheduler', () => {
       expect(() => schedule.next()).to.throw(TypeError)
     })
 
-    it('dies if attacker has no attackMspa', () => {
+    it('dies if attacker has no attackDelay', () => {
       let schedule = createSchedule([{ initiative: 0 }])
       expect(() => schedule.next()).to.throw(TypeError)
     })
 
     it('dies if attacker has no initiative', () => {
-      let schedule = createSchedule([{ attackMspa: 1000 }])
+      let schedule = createSchedule([{ attackDelay: 1000 }])
       expect(() => schedule.next()).to.throw(TypeError)
     })
   })
