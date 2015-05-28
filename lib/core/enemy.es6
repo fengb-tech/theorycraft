@@ -1,5 +1,6 @@
+let _ = require('lodash')
+
 let Hero = require('tc/core/hero/base')
-let random = require('tc/util/random')
 let Stats = require('tc/core/stats')
 
 module.exports = class Enemy {
@@ -18,6 +19,6 @@ module.exports = class Enemy {
   }
 
   rollDamage(){
-    return random.int(100, 200)
+    return _.random(100, 200)
   }
 }

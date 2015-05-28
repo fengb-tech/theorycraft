@@ -2,7 +2,6 @@ let _ = require('lodash')
 
 let Stats = require('tc/core/stats')
 let Item = require('tc/core/item')
-let Random = require('tc/util/random')
 
 module.exports = class Equipment {
   constructor(){
@@ -34,7 +33,7 @@ module.exports = class Equipment {
 
   rollDamage(){
     if(this.weapon){
-      return Random.int(this.weapon.minDamage, this.weapon.maxDamage)
+      return _.random(this.weapon.minDamage, this.weapon.maxDamage)
     } else {
       // FIXME: magic numbers
       return 100
