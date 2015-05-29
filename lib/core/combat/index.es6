@@ -2,8 +2,9 @@ let createSchedule = require('./scheduler')
 let Duel = require('./duel')
 let Hps = require('./hps')
 let Enemy = require('tc/core/enemy')
+let generator = require('tc/util/generator')
 
-const MS_OVERFLOW = 100
+const MAX_DURATION_MS = 100
 
 module.exports = class Combat {
   constructor(hero, enemies){
@@ -31,14 +32,7 @@ module.exports = class Combat {
   }
 
   *runner(){
-    let startMs = new Date().valueOf()
-
-    for(let [time, attackers] of this.schedule){
-      let duration = new Date() - startMs
-      if(duration >= MS_OVERFLOW){
-        throw new RangeError(`Timeout: ${duration}ms`)
-      }
-
+    for(let [time, attackers] of generator.timeout(MAX_DURATION_MS, this.schedule)){
       if(this.isDone()){
         break
       }

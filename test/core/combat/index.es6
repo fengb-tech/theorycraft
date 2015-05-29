@@ -53,6 +53,7 @@ describe('tc/core/combat', () => {
 
     describe('when isDone = true', () => {
       beforeEach(function(){
+        this.combat.schedule = endlessGenerator([0, []])
         this.combat.isDone = () => true
       })
 
