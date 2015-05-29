@@ -23,12 +23,8 @@ module.exports = class Combat {
   }
 
   run(){
-    if(!this._run){
-      Combat._current = this
-      this._run = Array.from(this.runner())
-      Combat._current = null
-    }
-    return this._run
+    this.result = Array.from(this.runner())
+    return this
   }
 
   *runner(){

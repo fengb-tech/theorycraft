@@ -45,10 +45,9 @@ describe('tc/core/combat', () => {
       expect(this.combatRunner).not.to.deep.yield([10, this.enemy])
     })
 
-    it('terminates and saves the run state when taking too long', function(){
+    it('terminates when taking too long', function(){
       this.combat.schedule = endlessGenerator([0, []])
       expect(() => this.combat.run()).to.throw(RangeError)
-      expect(Combat._current).to.be.instanceof(Combat)
     })
 
     describe('when isDone = true', () => {
