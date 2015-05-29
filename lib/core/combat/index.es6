@@ -1,9 +1,9 @@
 let createSchedule = require('./scheduler')
 let Duel = require('./duel')
+let Hps = require('./hps')
 let Enemy = require('tc/core/enemy')
 
 const MS_OVERFLOW = 100
-const FULL_HP = 10000
 
 module.exports = class Combat {
   constructor(hero, enemies){
@@ -13,10 +13,7 @@ module.exports = class Combat {
     let chars = [hero, ...enemies]
     this.schedule = createSchedule(chars)
 
-    this._hps = new Map()
-    for(let char of chars){
-      this._hps.set(char, FULL_HP)
-    }
+    this._hps = new Hps(chars)
   }
 
   static run(hero){
@@ -47,7 +44,7 @@ module.exports = class Combat {
       }
 
       for(let attacker of attackers){
-        if(this._hps.get(attacker) > 0){
+        if(this._hps.isActive(attacker)){
           yield this.processAttack(time, attacker)
         }
       }
@@ -63,7 +60,7 @@ module.exports = class Combat {
   }
 
   kill(char){
-    this._hps.set(char, 0)
+    this._hps.kill(char)
   }
 
   isDone(){
@@ -75,7 +72,7 @@ module.exports = class Combat {
   }
 
   nextEnemy(){
-    return this.enemies.find((enemy) => this._hps.get(enemy) > 0)
+    return this.enemies.find((enemy) => this._hps.isActive(enemy))
   }
 
   processAttack(time, attacker){
@@ -88,14 +85,10 @@ module.exports = class Combat {
   }
 
   processDamage(defender, damage){
-    let hp = this._hps.get(defender) - damage
-    if(hp > 0){
-      this._hps.set(defender, hp)
-    } else if(defender === this.hero){
+    let hp = this._map.hurt(defender, damage)
+    if(hp < 0 && defender === this.hero){
       // TODO: real recovery
-      this._hps.set(defender, FULL_HP)
-    } else {
-      this.kill(defender)
+      this._hps.recover(defender)
     }
   }
 }
