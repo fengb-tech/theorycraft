@@ -1,2 +1,2 @@
 require('babel/register')
-require('./Gulpfile.es6')
+require('./Gulpfile-es6')
