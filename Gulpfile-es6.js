@@ -1,8 +1,11 @@
+let _ = require('lodash')
+let isparta = require('isparta')
+
 let gulp = require('gulp')
 let jshint = require('gulp-jshint')
 let mocha = require('gulp-mocha')
 let gprint = require('gulp-print')
-let _ = require('lodash')
+let istanbul = require('gulp-istanbul')
 
 let paths = {
   meta: ['.jshintrc', '*.{js,json,es6}'],
@@ -23,8 +26,14 @@ gulp.task('lint', () => {
 })
 
 gulp.task('mocha', () => {
-  return gulp.src([...paths.lib, ...paths.test], {read: false})
-        .pipe(mocha({ reporter: 'dot' }))
+  return gulp.src(paths.lib)
+        .pipe(istanbul({ instrumenter: isparta.Instrumenter }))
+        .pipe(istanbul.hookRequire())
+        .on('finish', () => {
+          return gulp.src(paths.test)
+                .pipe(mocha({ reporter: 'dot' }))
+                .pipe(istanbul.writeReports({ reporters: ['lcov'] }))
+        })
 })
 
 gulp.task('test', ['lint', 'mocha'])
