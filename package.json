@@ -26,6 +26,7 @@
     "babel": "^5.1.13",
     "babelify": "^6.1.2",
     "browserify-middleware": "^5.0.2",
+    "co": "^4.5.4",
     "co-views": "^0.3.0",
     "jade": "^1.10.0",
     "koa": "^0.19.1",
