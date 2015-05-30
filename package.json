@@ -7,6 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
+    "nodemon": "nodemon --exec babel-node index.es6",
     "start": "babel-node index.es6",
     "test": "gulp test"
   },
@@ -44,6 +45,7 @@
     "gulp": "^3.8.11",
     "gulp-jshint": "^1.10.0",
     "gulp-mocha": "^2.0.1",
-    "gulp-print": "^1.1.0"
+    "gulp-print": "^1.1.0",
+    "nodemon": "^1.3.7"
   }
 }
