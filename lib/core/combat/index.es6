@@ -35,14 +35,12 @@ module.exports = class Combat {
 
       for(let attacker of attackers){
         if(this._hps.isActive(attacker)){
-          yield this.processAttack(time, attacker)
+          yield* this.processAttack(time, attacker)
         }
       }
     }
 
-    for(let directive of this.processCleanup()){
-      yield directive
-    }
+    yield* this.processCleanup()
   }
 
   processCleanup(){
@@ -65,20 +63,17 @@ module.exports = class Combat {
     return this.enemies.find((enemy) => this._hps.isActive(enemy))
   }
 
-  processAttack(time, attacker){
+  *processAttack(time, attacker){
     let defender = this.defenderOf(attacker)
     let duel = new Duel(attacker.stats, defender.stats)
     let damage = duel.calculate(Math.random(), attacker.rollDamage())
 
-    this.processDamage(defender, damage)
-    return [time, 'attack', attacker, defender, damage]
-  }
-
-  processDamage(defender, damage){
     let hp = this._map.hurt(defender, damage)
+    yield [time, 'attack', attacker, defender, damage]
+
     if(hp < 0 && defender === this.hero){
       // TODO: real recovery
-      this._hps.recover(defender)
+      yield this._hps.recover(defender)
     }
   }
 }
