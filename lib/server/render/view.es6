@@ -8,5 +8,3 @@ module.exports = function(file, options = {}){
     this.body = yield view(file, options)
   }
 }
-
-module.exports.raw = view

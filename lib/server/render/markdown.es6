@@ -1,4 +1,3 @@
-let _ = require('lodash')
 let fs = require('mz/fs')
 let markdown = new require('markdown-it')()
 
