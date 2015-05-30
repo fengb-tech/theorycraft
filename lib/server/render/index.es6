@@ -17,3 +17,5 @@ exports.markdownFile = function markdownFile(filename, options = {}){
     }))
   }
 }
+
+exports.browserify = require('./browserify')
