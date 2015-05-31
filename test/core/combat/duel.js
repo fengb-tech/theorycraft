@@ -1,3 +1,4 @@
+let _ = require('lodash')
 let expect = require('tc-test/support').expect
 
 let Duel = require('tc/core/combat/duel')
@@ -12,10 +13,12 @@ describe('core/combat/duel', () => {
 
   describe('#calculate', () => {
     beforeEach(function(){
-      this.duel.hitPercent = () => 0.5
-      this.duel.critPercent = () => 0.1
-      this.duel.damageMultiplier = () => 1.5
-      this.duel.critMultiplier = () => 2
+      _.extend(this.duel, {
+        hitPercent: () => 0.5,
+        critPercent: () => 0.1,
+        damageMultiplier: () => 1.5,
+        critMultiplier: () => 2,
+      })
     })
 
     it('is null when hitRoll > 0.5', function(){

@@ -8,7 +8,7 @@ describe('tc/core/combat', () => {
   beforeEach(function(){
     this.hero = { type: 'hero' }
     this.enemy = { type: 'enemy' }
-    this.combat = new Combat(this.hero, [this.enemy])
+    this.combat = new Combat(this.hero, { enemies: [this.enemy] })
   })
 
   describe('#isDone', () => {

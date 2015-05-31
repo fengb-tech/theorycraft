@@ -38,6 +38,7 @@
     "mz": "^2.0.0"
   },
   "devDependencies": {
+    "benchmark": "^1.0.0",
     "chai": "^2.3.0",
     "chai-generator": "^2.0.0",
     "chai-properties": "^1.2.0",
