@@ -7,6 +7,7 @@ _.extend(gulp, {
   mocha:    require('gulp-mocha'),
   print:    require('gulp-print'),
   istanbul: require('gulp-istanbul'),
+  plumber:  require('gulp-plumber'),
 })
 
 let paths = {
@@ -33,6 +34,7 @@ gulp.task('mocha', () =>
     .pipe(gulp.istanbul.hookRequire())
     .on('finish', () =>
       gulp.src(paths.test)
+        .pipe(gulp.plumber())
         .pipe(gulp.mocha({ reporter: 'dot' }))
         .pipe(gulp.istanbul.writeReports({ reporters: ['lcov'] }))
     )
