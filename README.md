@@ -1,6 +1,15 @@
-# Theorycraft - an automated grind
+# Theorycraft [![Tests][tests-img]][tests-url] [![Quality][quality-img]][quality-url] [![Coverage][coverage-img]][coverage-url]
 
 ## Technology
+* [ES6](http://git.io/es6features) / [Babel](https://babeljs.io)
 * [IO.js](https://iojs.org)
 * [Koa](http://koajs.com)
-* [ES6](http://git.io/es6features) / [Babel](https://babeljs.io)
+
+[tests-img]: https://img.shields.io/travis/fengb-tech/theorycraft.svg?style=flat-square
+[tests-url]: https://travis-ci.org/fengb-tech/theorycraft
+
+[quality-img]: https://img.shields.io/codeclimate/github/fengb-tech/theorycraft.svg?style=flat-square
+[quality-url]: https://codeclimate.com/github/fengb-tech/theorycraft
+
+[coverage-img]: https://img.shields.io/codeclimate/coverage/github/fengb-tech/theorycraft.svg?style=flat-square
+[coverage-url]: https://codeclimate.com/github/fengb-tech/theorycraft
