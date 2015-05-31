@@ -56,14 +56,43 @@ describe('Stats', () => {
     })
   })
 
-  describe('#merge()', () => {
-    it('merges new stats onto the first object', () => {
+  describe('.mergeAll()', () => {
+    it('returns 0s if no stats', () => {
+      let merged = Stats.mergeAll([])
+      expect(merged).to.have.properties({
+        power:      0,
+        accuracy:   0,
+        critical:   0,
+        armor:      0,
+        dodge:      0,
+        resilience: 0,
+      })
+    })
+
+    it('merges a bunch of stats', () => {
+      let statses = [
+        Stats.allAt(10),
+        Stats.allAt(200),
+      ]
+      let merged = Stats.mergeAll(statses)
+      expect(merged).to.have.properties({
+        power:      210,
+        accuracy:   210,
+        critical:   210,
+        armor:      210,
+        dodge:      210,
+        resilience: 210,
+      })
+    })
+  })
+
+  describe('#add()', () => {
+    it('creates a new object with merged stats', () => {
       let stats = new Stats({
         power:      1,
         accuracy:   2,
         resilience: 9,
-      })
-      stats.merge({
+      }).add({
         power:    5,
         accuracy: 6,
         critical: 7,
@@ -76,6 +105,24 @@ describe('Stats', () => {
         armor:      0,
         dodge:      0,
         resilience: 9,
+      })
+    })
+
+    it('does not change original stats', () => {
+      let original = Stats.allAt(0)
+      original.add({
+        power:    5,
+        accuracy: 6,
+        critical: 7,
+      })
+
+      expect(original).to.have.properties({
+        power:      0,
+        accuracy:   0,
+        critical:   0,
+        armor:      0,
+        dodge:      0,
+        resilience: 0,
       })
     })
   })
