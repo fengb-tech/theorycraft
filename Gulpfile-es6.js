@@ -10,40 +10,41 @@ _.extend(gulp, {
   plumber:  require('gulp-plumber'),
 })
 
-let paths = {
+const PATH = {
   meta: ['.jshintrc', '*.{js,json}'],
   lib:  ['lib/**/*.js'],
   test: ['test/**/*.js'],
 }
-paths.all = _(paths).values().flatten().value()
+PATH.all = _(PATH).values().flatten().value()
 
 gulp.task('files', () =>
-  gulp.src(paths.all)
+  gulp.src(PATH.all)
     .pipe(gulp.print())
 )
 
 gulp.task('lint', () =>
-  gulp.src(paths.all)
+  gulp.src(PATH.all)
     .pipe(gulp.jshint())
     .pipe(gulp.jshint.reporter('default'))
 )
 
-gulp.task('mocha', () =>
-  gulp.src(paths.lib)
+gulp.task('_istanbul', () =>
+  gulp.src(PATH.lib)
     .pipe(gulp.istanbul({ instrumenter: isparta.Instrumenter }))
     .pipe(gulp.istanbul.hookRequire())
-    .on('finish', () =>
-      gulp.src(paths.test)
-        .pipe(gulp.plumber())
-        .pipe(gulp.mocha({ reporter: 'dot' }))
-        .pipe(gulp.istanbul.writeReports({ reporters: ['lcov'] }))
-    )
+)
+
+gulp.task('mocha', ['_istanbul'], () =>
+  gulp.src(PATH.test)
+    .pipe(gulp.plumber())
+    .pipe(gulp.mocha({ reporter: 'dot' }))
+    .pipe(gulp.istanbul.writeReports({ reporters: ['lcov'] }))
 )
 
 gulp.task('test', ['lint', 'mocha'])
 
 gulp.task('watch-test', () =>
-  gulp.watch(paths.all, ['lint', 'test'])
+  gulp.watch(PATH.all, ['lint', 'test'])
 )
 
 gulp.task('default', ['test'])
