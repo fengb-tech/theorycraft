@@ -1,5 +1,5 @@
 {
-  "name": "theorycraft",
+  "name": "tc",
   "version": "0.0.1",
   "description": "an automated grind",
   "main": "index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fengb-tech/theorycraft.git"
+    "url": "https://github.com/fengb-tech/tc.git"
   },
   "author": "FENGB TECH",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fengb-tech/theorycraft/issues"
+    "url": "https://github.com/fengb-tech/tc/issues"
   },
-  "homepage": "https://github.com/fengb-tech/theorycraft",
+  "homepage": "https://github.com/fengb-tech/tc",
   "dependencies": {
     "app-root-path": "^1.0.0",
     "babel": "^5.1.13",
