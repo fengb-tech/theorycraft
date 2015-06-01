@@ -1,3 +1,5 @@
+#!/usr/bin/env babel-node
+
 let Benchmark = require('benchmark')
 let Hero = require('tc/core/hero')
 let Combat = require('tc/core/combat')
