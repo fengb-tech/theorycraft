@@ -3,17 +3,19 @@ let isparta = require('isparta')
 
 let gulp = require('gulp')
 _.extend(gulp, {
-  jshint:   require('gulp-jshint'),
-  mocha:    require('gulp-mocha'),
-  print:    require('gulp-print'),
-  istanbul: require('gulp-istanbul'),
-  plumber:  require('gulp-plumber'),
+  jshint:      require('gulp-jshint'),
+  mocha:       require('gulp-mocha'),
+  print:       require('gulp-print'),
+  istanbul:    require('gulp-istanbul'),
+  plumber:     require('gulp-plumber'),
+  runSequence: require('run-sequence'),
 })
 
 const PATH = {
-  meta: ['.jshintrc', '*.{js,json}'],
-  lib:  ['lib/**/*.js'],
-  test: ['test/**/*.js'],
+  meta:    ['.jshintrc', '*.{js,json}'],
+  lib:     ['lib/**/*.js'],
+  test:    ['test/**/*.js'],
+  profile: ['profile/**/*.js'],
 }
 PATH.all = _(PATH).values().flatten().value()
 
@@ -41,10 +43,12 @@ gulp.task('mocha', ['_istanbul'], () =>
     .pipe(gulp.istanbul.writeReports({ reporters: ['lcov'] }))
 )
 
-gulp.task('test', ['lint', 'mocha'])
+gulp.task('test', (done) => {
+  gulp.runSequence('lint', 'mocha', done)
+})
 
 gulp.task('watch-test', () =>
-  gulp.watch(PATH.all, ['lint', 'test'])
+  gulp.watch(PATH.all, ['test'])
 )
 
 gulp.task('default', ['test'])
