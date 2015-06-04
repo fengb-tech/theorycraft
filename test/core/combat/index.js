@@ -46,7 +46,10 @@ describe('tc/core/combat', () => {
     })
 
     it('terminates when taking too long', function(){
-      this.combat.schedule = endlessGenerator([0, []])
+      _.extend(this.combat, {
+        schedule: endlessGenerator([0, []]),
+        runTimeout: 10,
+      })
       expect(() => this.combat.run()).to.throw(RangeError)
     })
 
