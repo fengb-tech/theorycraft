@@ -4,6 +4,7 @@
 * [ES6](http://git.io/es6features) / [Babel](https://babeljs.io)
 * [io.js](https://iojs.org)
 * [Koa](http://koajs.com)
+* [React](http://reactjs.com)
 
 [tests-img]: https://img.shields.io/travis/fengb-tech/tc.svg?style=flat-square
 [tests-url]: https://travis-ci.org/fengb-tech/tc
