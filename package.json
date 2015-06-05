@@ -33,7 +33,9 @@
     "koa-router": "^5.0.1",
     "lodash": "^3.7.0",
     "markdown-it": "^4.2.0",
-    "mz": "^2.0.0"
+    "mz": "^2.0.0",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1"
   },
   "devDependencies": {
     "benchmark": "^1.0.0",
