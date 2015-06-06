@@ -86,6 +86,34 @@ describe('Stats', () => {
     })
   })
 
+  describe('#merge()', () => {
+    it('creates a new object with merged stats', () => {
+      let stats = new Stats({
+        power:      1,
+        accuracy:   2,
+        resilience: 9,
+      }).merge({
+        power:    5,
+        accuracy: 6,
+        critical: 7,
+      })
+
+      expect(stats).to.have.properties({
+        power:      6,
+        accuracy:   8,
+        critical:   7,
+        armor:      0,
+        dodge:      0,
+        resilience: 9,
+      })
+    })
+
+    it('emits a change event', () => {
+      let stats = new Stats()
+      expect(() => stats.merge()).to.cause(stats).to.emit('change')
+    })
+  })
+
   describe('#add()', () => {
     it('creates a new object with merged stats', () => {
       let stats = new Stats({
