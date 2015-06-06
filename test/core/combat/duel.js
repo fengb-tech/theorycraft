@@ -1,8 +1,8 @@
 let _ = require('lodash')
-let expect = require('tc-test/support').expect
+let expect = require('tc/test/support').expect
 
-let Duel = require('tc/core/combat/duel')
-let Stats = require('tc/core/stats')
+let Duel = require('tc/lib/core/combat/duel')
+let Stats = require('tc/lib/core/stats')
 
 describe('core/combat/duel', () => {
   beforeEach(function(){

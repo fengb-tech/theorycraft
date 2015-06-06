@@ -1,6 +1,6 @@
-let expect = require('tc-test/support').expect
+let expect = require('tc/test/support').expect
 
-let Base = require('tc/core/hero/base')
+let Base = require('tc/lib/core/hero/base')
 
 describe('core/hero/base', () => {
   describe('Base', () => {

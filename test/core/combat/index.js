@@ -1,10 +1,10 @@
 let _ = require('lodash')
 let endlessGenerator = require('endless-generator')
-let expect = require('tc-test/support').expect
+let expect = require('tc/test/support').expect
 
-let Combat = require('tc/core/combat')
+let Combat = require('tc/lib/core/combat')
 
-describe('tc/core/combat', () => {
+describe('tc/lib/core/combat', () => {
   beforeEach(function(){
     this.hero = { type: 'hero' }
     this.enemy = { type: 'enemy' }

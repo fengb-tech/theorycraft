@@ -1,7 +1,7 @@
-let Hero = require('tc/core/hero')
-let Combat = require('tc/core/combat')
+let Hero = require('tc/lib/core/hero')
+let Combat = require('tc/lib/core/combat')
 
-describe('tc/core/combat', () => {
+describe('tc/lib/core/combat', () => {
   describe('#run', () => {
     it('resolves', () => {
       let hero = new Hero()

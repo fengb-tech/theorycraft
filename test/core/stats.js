@@ -1,6 +1,6 @@
-let expect = require('tc-test/support').expect
+let expect = require('tc/test/support').expect
 
-let Stats = require('tc/core/stats')
+let Stats = require('tc/lib/core/stats')
 
 describe('Stats', () => {
   describe('constructor', () => {
