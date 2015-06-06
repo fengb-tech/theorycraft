@@ -1,6 +1,10 @@
 language: node_js
 node_js:
-- 'iojs'
+  - 'iojs'
+
+env:
+  - 'TC_COVERAGE=true'
+
 after_script:
-- npm install -g codeclimate-test-reporter
-- codeclimate < coverage/lcov.info
+  - 'npm install -g codeclimate-test-reporter'
+  - 'codeclimate < coverage/lcov.info'
