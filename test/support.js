@@ -6,5 +6,6 @@ chai
   .use(require('chai-eventemitter'))
   // TODO: dirty-chai kills the .not chain
   .use(require('dirty-chai'))
+  .use(require('sinon-chai'))
 
 exports.expect = chai.expect
