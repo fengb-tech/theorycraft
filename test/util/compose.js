@@ -59,5 +59,12 @@ describe('tc/lib/util/compose', () => {
       composed.call(spy)
       expect(spy).to.have.been.calledOn(spy)
     })
+
+    it('returns a function if it is the only one being composed', () => {
+      let spy = sinon.spy()
+      let composed = compose.series([null, spy, undefined])
+
+      expect(composed).to.equal(spy)
+    })
   })
 })
