@@ -5,7 +5,6 @@ let gulp = require('gulp')
 _.extend(gulp, {
   jshint:      require('gulp-jshint'),
   mocha:       require('gulp-mocha'),
-  print:       require('gulp-print'),
   istanbul:    require('gulp-istanbul'),
   plumber:     require('gulp-plumber'),
   runSequence: require('run-sequence'),
@@ -18,11 +17,6 @@ const PATH = {
   profile: ['profile/**/*.js'],
 }
 PATH.all = _(PATH).values().flatten().value()
-
-gulp.task('files', () =>
-  gulp.src(PATH.all)
-    .pipe(gulp.print())
-)
 
 gulp.task('lint', () =>
   gulp.src(PATH.all)
