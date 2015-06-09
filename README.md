@@ -6,6 +6,15 @@
 * [Koa](http://koajs.com)
 * [React](http://reactjs.com)
 
+## Getting started
+
+```console
+$ npm install
+$ bower install
+$ node_modules/.bin/gulp
+$ npm start
+```
+
 [tests-img]: https://img.shields.io/travis/fengb-tech/tc.svg?style=flat-square
 [tests-url]: https://travis-ci.org/fengb-tech/tc
 
