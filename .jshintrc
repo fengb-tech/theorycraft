@@ -14,7 +14,6 @@
   "asi": true,
   "eqnull": true,
 
-  "browserify": true,
   "mocha": true,
   "node": true,
   "esnext": true
