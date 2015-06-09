@@ -10,6 +10,7 @@ const gulp = {
 }
 
 gulp.tasksFor('test', require('tc/lib/gulp/test'))
+gulp.tasksFor('assets', require('tc/lib/gulp/assets'))
 
 gulp.core.task('watch', ['test:watch'])
 
