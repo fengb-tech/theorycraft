@@ -4,14 +4,14 @@ require('babel/register')
 
 const gulp = {
   core: require('gulp'),
-  tasksFor(namespace, module){
-    module(namespace)
+  loadTasks(name){
+    require(`tc/lib/gulp/${name}`)
   }
 }
 
-gulp.tasksFor('test', require('tc/lib/gulp/test'))
-gulp.tasksFor('assets', require('tc/lib/gulp/assets'))
+gulp.loadTasks('assets')
+gulp.loadTasks('test')
 
-gulp.core.task('watch', ['test:watch'])
+gulp.core.task('watch', ['watch:assets', 'watch:test'])
 
-gulp.core.task('default', ['test'])
+gulp.core.task('default', ['assets', 'test'])
