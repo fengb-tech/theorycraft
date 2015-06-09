@@ -1,6 +1,7 @@
 {
   "name": "tc",
   "dependencies": {
-    "react": "~0.13.3"
+    "react": "0.13.3",
+    "core.js": "0.9.15"
   }
 }
