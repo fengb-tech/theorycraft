@@ -1,0 +1,5 @@
+{
+  "exec": "babel-node",
+  "watch": ["index.js", "lib", "node_modules"],
+  "ignore": "lib/client"
+}
