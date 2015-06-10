@@ -1,7 +1,6 @@
 .*
 *.log
 
-/bower_components
 /coverage
 /node_modules
 /public/assets

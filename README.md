@@ -10,7 +10,6 @@
 
 ```console
 $ npm install
-$ bower install
 $ node_modules/.bin/gulp
 $ npm start
 ```
