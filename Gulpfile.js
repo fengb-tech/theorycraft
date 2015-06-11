@@ -1,10 +1,8 @@
-'use strict'
-
 require('babel/register')
 
-const gulp = {
+var gulp = {
   core: require('gulp'),
-  loadTasks(name){
+  loadTasks: function(name){
     require(`tc/lib/gulp/${name}`)
   }
 }
