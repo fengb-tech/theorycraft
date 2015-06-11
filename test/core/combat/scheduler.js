@@ -8,7 +8,7 @@ describe('core/combat/scheduler', () => {
       { attackDelay: 2000, initiative: 0 },
       { attackDelay: 3000, initiative: 0 },
     ]
-    let schedule = createSchedule(attackers)
+    let schedule = createSchedule(0, attackers)
 
     expect(schedule).to.deep.yield([   0, [attackers[0], attackers[1]]])
     expect(schedule).to.deep.yield([2000, [attackers[0]]])
@@ -22,7 +22,7 @@ describe('core/combat/scheduler', () => {
       { attackDelay: 2000, initiative: 1 },
       { attackDelay: 3000, initiative: 2 },
     ]
-    let schedule = createSchedule(attackers)
+    let schedule = createSchedule(0, attackers)
 
     expect(schedule).to.deep.yield([  -2, [attackers[1]]])
     expect(schedule).to.deep.yield([  -1, [attackers[0]]])
@@ -32,17 +32,17 @@ describe('core/combat/scheduler', () => {
 
   describe('bad input', () => {
     it('dies if no attackers', () => {
-      let schedule = createSchedule()
+      let schedule = createSchedule(0)
       expect(() => schedule.next()).to.throw(TypeError)
     })
 
     it('dies if attacker has no attackDelay', () => {
-      let schedule = createSchedule([{ initiative: 0 }])
+      let schedule = createSchedule(0, [{ initiative: 0 }])
       expect(() => schedule.next()).to.throw(TypeError)
     })
 
     it('dies if attacker has no initiative', () => {
-      let schedule = createSchedule([{ attackDelay: 1000 }])
+      let schedule = createSchedule(0, [{ attackDelay: 1000 }])
       expect(() => schedule.next()).to.throw(TypeError)
     })
   })
