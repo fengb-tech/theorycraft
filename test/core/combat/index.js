@@ -64,11 +64,6 @@ describe('tc/lib/core/combat', () => {
         expect(this.combatRunner).to.yield('foobar!')
         expect(this.combatRunner).to.return()
       })
-
-      it('ignores cleanup() if null', function(){
-        this.combat.cleanup = () => null
-        expect(this.combatRunner).to.return()
-      })
     })
   })
 })
