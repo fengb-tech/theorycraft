@@ -1,1 +1,44 @@
-main { width: 1px; }
+$gutter-size: 8px;
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.page-header {
+  $page-header-height: 30px;
+
+  position: absolute;
+  bottom: 100%;
+  background: red;
+  left: 0;
+  right: 0;
+  padding: 0 $gutter-size;
+  transition: margin-bottom 0.2s ease;
+  height: $page-header-height;
+  line-height: $page-header-height;
+
+  h1 {
+    font-size: 24px;
+    float: left;
+  }
+
+  footer {
+    float: right;
+  }
+
+  &:hover {
+    margin-bottom: -$page-header-height;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: black;
+    top: 100%;
+    right: 0;
+    height: 10px;
+    width: 20px;
+  }
+}
