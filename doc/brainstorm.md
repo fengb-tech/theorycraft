@@ -8,8 +8,7 @@
 * Different classes.  Comparison should be made only between the same class.
 * All stats should be useful. Different classes should prefer different stats.
 
-* Reusable recovery move for 50% health. Causes [5s] of [50%] damage output during battle and [2s] delay after combat.
-* Killing blow leaves hero at 1 health and forces recover.
+* Killing blow forces hero to use recovery: maximizes health but lowers damage by [50%] for [5s].
 * Resurrecting inherits all gear; increases XP by [1%] per level sacrificed.
 * Hero stats start at [100] and increase by [5%] every level.
 * Wearing decent (green) gear should increase stats by [100%].
@@ -58,16 +57,21 @@ After hit percent is maxed, accuracy adds to crit percent.
   * 2 - green
   * 3 - blue
   * 4 - purple
-  * 5 - orange
-* Each enchantment channels 2 stats. Doubling up is allowed.
-* Rare enchantment channels 3 stats. Tripling up is allowed. Higher chance at spawn.
+  * 5 - orange, guaranteed uniqueness
+* Enchantments
+  * common - channels 2 stats.  Doubling up is allowed.
+  * rare - channels 3 stats. Tripling up is allowed.
+  * unique - provides a special effect:
+    * weapon speed
+    * initiative
 * Channeling the same stat has a diminishing effect
-* Items have different stat focuses - bonus to stat + guaranteed enchantment with stat:
+* Items have different focuses - bonus to stat + guaranteed enchantment with stat:
   * Weapon 1 - Power (e.g. saber)
   * Weapon 2 - Accuracy (e.g. rapier)
   * Weapon 3 - Critical (e.g. axe)
   * Shield - dodge
   * Body Armor - armor
   * Helm - resilience
-* Enchantments can be rerolled at a cost, including the focused enchantment.
-* Items can be power infused: increased item level.  Successive power infusions becomes prohibitively expensive.
+* Disenchant: destroy the item to extract any enchantment.
+* Enchant: replace an existing enchantment.  Successive enchants become more expensive.
+* Power infuse: increase item level.  Successive power infusions become more expensive.
