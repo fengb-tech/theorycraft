@@ -1,8 +1,4 @@
 {
   "extends": "../../../.jshintrc",
-
-  "browserify": true,
-  "globals": {
-    "React": true
-  }
+  "browserify": true
 }
