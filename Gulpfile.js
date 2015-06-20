@@ -1,9 +1,10 @@
+require('./env')
 require('babel/register')
 
 var gulp = {
   core: require('gulp'),
   loadTasks: function(name){
-    require(`tc/lib/gulp/${name}`)
+    require(`lib/gulp/${name}`)
   }
 }
 

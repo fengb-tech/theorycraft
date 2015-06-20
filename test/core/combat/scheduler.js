@@ -1,6 +1,6 @@
-let expect = require('tc/test/support').expect
+let expect = require('test/support').expect
 
-let createSchedule = require('tc/lib/core/combat/scheduler')
+let createSchedule = require('lib/core/combat/scheduler')
 
 describe('core/combat/scheduler', () => {
   it('schedules based on attackDelay', () => {

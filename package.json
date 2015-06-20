@@ -60,10 +60,5 @@
     "sinon-chai": "^2.7.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
-  },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
   }
 }

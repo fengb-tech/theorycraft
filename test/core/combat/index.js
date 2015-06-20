@@ -1,8 +1,8 @@
 let _ = require('lodash')
 let endlessGenerator = require('endless-generator')
-let expect = require('tc/test/support').expect
+let expect = require('test/support').expect
 
-let Combat = require('tc/lib/core/combat')
+let Combat = require('lib/core/combat')
 
 describe('tc/lib/core/combat', () => {
   beforeEach(function(){

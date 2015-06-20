@@ -1,9 +1,9 @@
 const sinon = require('sinon')
 const _ = require('lodash')
 
-const expect = require('tc/test/support').expect
+const expect = require('test/support').expect
 
-const compose = require('tc/lib/util/compose')
+const compose = require('lib/util/compose')
 
 describe('tc/lib/util/compose', () => {
   describe('.series', () => {
