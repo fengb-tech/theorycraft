@@ -4,6 +4,7 @@
     "react": "~0.13.3",
     "core.js": "~0.9.15",
     "regenerator": "git://github.com/facebook/regenerator.git#~0.8.28",
-    "lodash": "~3.9.3"
+    "lodash": "~3.9.3",
+    "eventemitter3": "~1.1.1"
   }
 }
