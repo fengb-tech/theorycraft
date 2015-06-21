@@ -39,6 +39,7 @@
     "babelify": "^6.1.2",
     "benchmark": "^1.0.0",
     "browserify": "^10.2.3",
+    "browserify-shim": "^3.8.9",
     "chai": "^3.0.0",
     "chai-eventemitter": "^1.0.1",
     "chai-generator": "^2.0.2",
@@ -60,5 +61,10 @@
     "sinon-chai": "^2.7.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
+  },
+  "browserify-shim": {
+    "react": "global:React",
+    "lodash": "global:_",
+    "eventemitter3": "global:EventEmitter"
   }
 }
