@@ -1,9 +1,9 @@
-require('./env')
+require('./init')
 
-const server = require('lib/server')
+var server = require('lib/server')
 
-const port = Number(process.env.PORT || 5000)
+var port = Number(process.env.PORT || 5000)
 
-server.listen(port, () => {
+server.listen(port, function(){
   console.log('tc started on', port)
 })

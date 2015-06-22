@@ -1,3 +1,5 @@
+require('babel/register')
+
 if(process.env.NODE_PATH){
   process.env.NODE_PATH += `:${__dirname}`
 } else {

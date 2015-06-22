@@ -1,6 +1,6 @@
 #!/usr/bin/env babel-node
 
-require('../env')
+require('../init')
 
 let Benchmark = require('benchmark')
 let Hero = require('lib/core/hero')
