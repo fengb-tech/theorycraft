@@ -1,0 +1,47 @@
+const sinon = require('sinon')
+const expect = require('test/support').expect
+
+const EventEmitter = require('eventemitter3')
+const Listener = require('lib/assets/js/views/listener')
+
+describe('lib/assets/js/views/listener', () => {
+  class Tester {
+    constructor(props){
+      this.props = props
+    }
+  }
+  Listener.props({ emitter: 'update' }, Tester)
+
+  beforeEach(function(){
+    this.emitter = new EventEmitter()
+    this.tester = new Tester({ emitter: this.emitter })
+    this.tester.forceUpdate = sinon.spy()
+  })
+
+  it('wires up forceUpdate after componentDidMount', function(){
+    this.tester.componentDidMount()
+
+    this.emitter.emit('update')
+    expect(this.tester.forceUpdate).to.have.been.called()
+  })
+
+  it('ignores forceUpdate after componentWillUnmount', function(){
+    this.tester.componentDidMount()
+    this.tester.componentWillUnmount()
+
+    this.emitter.emit('update')
+    expect(this.tester.forceUpdate).not.to.have.been.called()
+  })
+
+  it('swaps forceUpdate listener after componentWillReceiveProps', function(){
+    this.tester.componentDidMount()
+    let emitter = new EventEmitter()
+    this.tester.componentWillReceiveProps({ emitter })
+
+    this.emitter.emit('update')
+    expect(this.tester.forceUpdate).not.to.have.been.called()
+
+    emitter.emit('update')
+    expect(this.tester.forceUpdate).to.have.been.called()
+  })
+})

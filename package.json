@@ -58,7 +58,7 @@
     "react": "^0.13.3",
     "react-jade": "^2.4.0",
     "sinon": "^1.14.1",
-    "sinon-chai": "^2.7.0",
+    "sinon-chai": "^2.8.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
   },
