@@ -1,6 +1,5 @@
-let _ = require('lodash')
+let { expect, _ } = require('test/support')
 let endlessGenerator = require('endless-generator')
-let expect = require('test/support').expect
 
 let Combat = require('lib/core/combat')
 

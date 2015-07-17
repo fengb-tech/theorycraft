@@ -1,5 +1,4 @@
-const sinon = require('sinon')
-const expect = require('test/support').expect
+const { expect, sinon } = require('test/support')
 
 const EventEmitter = require('eventemitter3')
 const Listener = require('lib/assets/js/views/listener')

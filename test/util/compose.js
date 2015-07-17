@@ -1,7 +1,4 @@
-const sinon = require('sinon')
-const _ = require('lodash')
-
-const expect = require('test/support').expect
+const { expect, _, sinon } = require('test/support')
 
 const compose = require('lib/util/compose')
 

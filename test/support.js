@@ -9,3 +9,5 @@ chai
   .use(require('sinon-chai'))
 
 exports.expect = chai.expect
+exports.sinon = require('sinon')
+exports._ = require('lodash')

@@ -1,4 +1,4 @@
-let expect = require('test/support').expect
+let { expect } = require('test/support')
 
 let createSchedule = require('lib/core/combat/scheduler')
 

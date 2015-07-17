@@ -1,5 +1,4 @@
-let _ = require('lodash')
-let expect = require('test/support').expect
+let { expect, _ } = require('test/support')
 
 let Duel = require('lib/core/combat/duel')
 let Stats = require('lib/core/stats')
