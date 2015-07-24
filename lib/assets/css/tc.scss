@@ -42,3 +42,10 @@ $gutter-size: 8px;
     width: 20px;
   }
 }
+
+.combat {
+  height: 400px;
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid black;
+}
