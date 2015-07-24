@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "babelify": "^6.1.2",
-    "benchmark": "^1.0.0",
     "browserify": "^10.2.3",
     "browserify-shim": "^3.8.9",
     "chai": "^3.0.0",

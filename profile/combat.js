@@ -1,23 +1,19 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 
-require('../init')
+var profile = require('./support').profile
 
-let Benchmark = require('benchmark')
-let Hero = require('lib/core/hero')
-let Combat = require('lib/core/combat')
-let Enemy = require('lib/core/enemy')
+var Hero = require('lib/core/hero')
+var Combat = require('lib/core/combat')
+var Enemy = require('lib/core/enemy')
 
-let h = new Hero()
-let e = new Enemy(1)
+var h = new Hero()
+var e = new Enemy(1)
 e.stats.armor = 10000000 // ENDLESS COMBAT
 
-let c = new Combat(h, {
+var c = new Combat(h, {
   enemies: [e],
   runTimeout: 100000000,
 })
-let run = c.runner()
+var run = c.runner()
 
-new Benchmark.Suite()
-  .add('combat', () => run.next())
-  .on('cycle', (event) => console.log(String(event.target)))
-  .run({ 'async': true })
+profile(function(){ run.next() })
