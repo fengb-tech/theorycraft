@@ -11,3 +11,4 @@ chai
 exports.expect = chai.expect
 exports.sinon = require('sinon')
 exports._ = require('lodash')
+exports.EPS = 0.001
