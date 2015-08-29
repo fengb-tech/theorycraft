@@ -26,5 +26,10 @@ describe('lib/core/weapon', () => {
       expect(weapon.minDamage).to.not.equal(template.minDamage)
       expect(weapon.maxDamage).to.not.equal(template.maxDamage)
     })
+
+    it('has consistent dpms', () => {
+      let weapon = new Weapon(template)
+      expect(weapon.dpms).to.equal(Weapon.dpms(template))
+    })
   })
 })
