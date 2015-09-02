@@ -1,42 +1,42 @@
 {
   "randomize": {
-    "delay": [-0.2, 0.2],
+    "attackDelay": [-0.2, 0.2],
     "maxDamage": [-0.2, 0.2]
   },
   "items": [
     {
       "names": ["dagger"],
-      "delay": 1000,
+      "attackDelay": 1000,
       "minDamage": 300,
       "maxDamage": 700
     },
     {
       "names": ["club"],
-      "delay": 1000,
+      "attackDelay": 1000,
       "minDamage": 400,
       "maxDamage": 600
     },
     {
       "names": ["spear"],
-      "delay": 1400,
+      "attackDelay": 1400,
       "minDamage": 420,
       "maxDamage": 980
     },
     {
       "names": ["sword"],
-      "delay": 1400,
+      "attackDelay": 1400,
       "minDamage": 560,
       "maxDamage": 840
     },
     {
       "names": ["axe"],
-      "delay": 1800,
+      "attackDelay": 1800,
       "minDamage": 540,
       "maxDamage": 1260
     },
     {
       "names": ["mace"],
-      "delay": 1800,
+      "attackDelay": 1800,
       "minDamage": 720,
       "maxDamage": 1080
     }

@@ -3,7 +3,7 @@ const Weapon = require('lib/core/weapon')
 
 let template = {
   names: ['template'],
-  delay: 1000,
+  attackDelay: 1000,
   minDamage: 400,
   maxDamage: 600,
 }
@@ -22,14 +22,14 @@ describe('lib/core/weapon', () => {
     it('randomizes data', () => {
       let weapon = new Weapon(template)
       expect(weapon.name).to.equal('template')
-      expect(weapon.delay).to.not.equal(template.delay)
+      expect(weapon.attackDelay).to.not.equal(template.attackDelay)
       expect(weapon.minDamage).to.not.equal(template.minDamage)
       expect(weapon.maxDamage).to.not.equal(template.maxDamage)
     })
 
     it('has consistent dpms', () => {
       let weapon = new Weapon(template)
-      expect(weapon.dpms).to.equal(Weapon.dpms(template))
+      expect(weapon.dpms).to.be.closeTo(Weapon.dpms(template), 0.01)
     })
   })
 })
