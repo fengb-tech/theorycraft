@@ -18,9 +18,9 @@ describe('lib/core/item/weapon', () => {
     })
   })
 
-  describe('constructor', () => {
+  describe('.fromTemplate', () => {
     it('randomizes data', () => {
-      let weapon = new Weapon(template)
+      let weapon = Weapon.fromTemplate(template)
       expect(weapon.name).to.equal('template')
       expect(weapon.attackDelay).to.not.equal(template.attackDelay)
       expect(weapon.minDamage).to.not.equal(template.minDamage)
@@ -28,7 +28,7 @@ describe('lib/core/item/weapon', () => {
     })
 
     it('has consistent dpms', () => {
-      let weapon = new Weapon(template)
+      let weapon = Weapon.fromTemplate(template)
       expect(weapon.dpms).to.be.closeTo(Weapon.dpms(template), 0.01)
     })
   })
