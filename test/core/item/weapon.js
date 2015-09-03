@@ -1,5 +1,5 @@
 const { expect, EPS } = require('test/support')
-const Weapon = require('lib/core/weapon')
+const Weapon = require('lib/core/item/weapon')
 
 let template = {
   names: ['template'],
@@ -8,7 +8,7 @@ let template = {
   maxDamage: 600,
 }
 
-describe('lib/core/weapon', () => {
+describe('lib/core/item/weapon', () => {
   describe('data', () => {
     it('has balanced weapons', () => {
       let baseDpms = Weapon.dpms(Weapon.data.items[0])
