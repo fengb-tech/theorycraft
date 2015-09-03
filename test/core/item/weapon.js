@@ -11,8 +11,8 @@ let template = {
 describe('lib/core/item/weapon', () => {
   describe('data', () => {
     it('has balanced weapons', () => {
-      let baseDpms = Weapon.dpms(Weapon.data.items[0])
-      for(let weapon of Weapon.data.items){
+      let baseDpms = Weapon.dpms(Weapon.data.templates[0])
+      for(let weapon of Weapon.data.templates){
         expect(Weapon.dpms(weapon)).to.be.closeTo(baseDpms, EPS)
       }
     })
@@ -30,6 +30,16 @@ describe('lib/core/item/weapon', () => {
     it('has consistent dpms', () => {
       let weapon = Weapon.fromTemplate(template)
       expect(weapon.dpms).to.be.closeTo(Weapon.dpms(template), 0.01)
+    })
+  })
+
+  describe('.generate', () => {
+    it('creates a new weapon', () => {
+      let weapon1 = Weapon.generate()
+      let weapon2 = Weapon.generate()
+      expect(weapon1.attackDelay).to.not.equal(weapon2.attackDelay)
+      expect(weapon1.minDamage).to.not.equal(weapon2.minDamage)
+      expect(weapon1.maxDamage).to.not.equal(weapon2.maxDamage)
     })
   })
 })
