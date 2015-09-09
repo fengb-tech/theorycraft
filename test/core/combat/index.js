@@ -2,11 +2,12 @@ let { expect, _ } = require('test/support')
 let endlessGenerator = require('endless-generator')
 
 let Combat = require('lib/core/combat')
+let Enemy = require('lib/core/enemy')
 
 describe('tc/lib/core/combat', () => {
   beforeEach(function(){
-    this.hero = { type: 'hero' }
-    this.enemy = { type: 'enemy' }
+    this.hero = new Enemy(1)
+    this.enemy = new Enemy(1)
     this.combat = new Combat(this.hero, { enemies: [this.enemy] })
   })
 
