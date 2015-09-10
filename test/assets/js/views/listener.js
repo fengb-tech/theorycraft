@@ -4,12 +4,13 @@ const EventEmitter = require('eventemitter3')
 const Listener = require('lib/assets/js/views/listener')
 
 describe('lib/assets/js/views/listener', () => {
-  class Tester {
+  class Tester extends Listener {
     constructor(props){
+      super()
+      this._listenOn = { emitter: 'update' }
       this.props = props
     }
   }
-  Listener.props({ emitter: 'update' }, Tester)
 
   beforeEach(function(){
     this.emitter = new EventEmitter()
