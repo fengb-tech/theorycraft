@@ -48,7 +48,7 @@
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
     "gulp-istanbul": "^0.10.0",
-    "gulp-jshint": "^1.10.0",
+    "gulp-eslint": "^1.0.0",
     "gulp-mocha": "^2.0.1",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.1",

@@ -5,7 +5,7 @@ require('babel/register')({
     'es6.parameters',     // Unexpected token =
     'es6.spread',         // Unexpected token ...
     'es6.arrowFunctions', // Node still has issues with arrow spread (...args) =>
-  ]
+  ],
 })
 
 if(process.env.NODE_PATH){

@@ -16,4 +16,4 @@ var c = new Combat(h, {
 })
 var run = c.runner()
 
-profile(function(){ run.next() })
+profile(() => run.next())

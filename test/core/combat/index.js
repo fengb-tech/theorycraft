@@ -27,7 +27,7 @@ describe('lib/core/combat', () => {
       _.extend(this.combat, {
         schedule: [],
         isDone: () => false,
-        processAttack: (...args) => [args]
+        processAttack: (...args) => [args],
       })
       this.combatRunner = this.combat.runner()
     })
