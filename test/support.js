@@ -1,4 +1,4 @@
-let chai = require('chai')
+const chai = require('chai')
 
 chai
   .use(require('chai-properties'))
@@ -8,7 +8,9 @@ chai
   .use(require('dirty-chai'))
   .use(require('sinon-chai'))
 
-exports.expect = chai.expect
-exports.sinon = require('sinon')
-exports._ = require('lodash')
-exports.EPS = 0.001
+module.exports = {
+  expect: chai.expect,
+  EPS: 0.001,
+  sinon: require('sinon'),
+  _: require('lodash'),
+}

@@ -1,7 +1,7 @@
-let { expect, _, EPS } = require('test/support')
+const { expect, _, EPS } = require('test/support')
 
-let Duel = require('lib/core/combat/duel')
-let Stats = require('lib/core/stats')
+const Duel = require('lib/core/combat/duel')
+const Stats = require('lib/core/stats')
 
 describe('core/combat/duel', () => {
   beforeEach(function(){

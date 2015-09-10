@@ -2,7 +2,7 @@ const { expect, _, sinon } = require('test/support')
 
 const compose = require('lib/util/compose')
 
-describe('tc/lib/util/compose', () => {
+describe('lib/util/compose', () => {
   describe('.series', () => {
     it('runs everything', () => {
       let spies = _.times(3, () => sinon.spy())

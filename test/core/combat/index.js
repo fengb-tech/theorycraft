@@ -1,10 +1,10 @@
-let { expect, _ } = require('test/support')
-let endlessGenerator = require('endless-generator')
+const { expect, _ } = require('test/support')
+const endlessGenerator = require('endless-generator')
 
-let Combat = require('lib/core/combat')
-let Enemy = require('lib/core/enemy')
+const Combat = require('lib/core/combat')
+const Enemy = require('lib/core/enemy')
 
-describe('tc/lib/core/combat', () => {
+describe('lib/core/combat', () => {
   beforeEach(function(){
     this.hero = new Enemy(1)
     this.enemy = new Enemy(1)

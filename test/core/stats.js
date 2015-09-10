@@ -1,6 +1,6 @@
-let { expect } = require('test/support')
+const { expect } = require('test/support')
 
-let Stats = require('lib/core/stats')
+const Stats = require('lib/core/stats')
 
 describe('Stats', () => {
   describe('constructor', () => {
