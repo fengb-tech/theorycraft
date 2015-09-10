@@ -1,12 +1,10 @@
 require('babel/register')({
-  blacklist: [
-    'es6.classes',
-    'es6.forOf',
-    'es6.objectSuper',
-    'es6.properties.computed',
-    'es6.properties.shorthand',
-    'es6.spec.symbols',
-    'regenerator',
+  whitelist: [
+    'strict',             // Block-scoped declarations (let, const, function, class) not yet supported outside strict mode
+    'es6.destructuring',  // Unexpected token {
+    'es6.parameters',     // Unexpected token =
+    'es6.spread',         // Unexpected token ...
+    'es6.arrowFunctions', // Node still has issues with arrow spread (...args) =>
   ]
 })
 
