@@ -1,4 +1,4 @@
-require('babel/register')({
+require('babel-core/register')({
   whitelist: [
     'strict',             // Block-scoped declarations (let, const, function, class) not yet supported outside strict mode
     'es6.destructuring',  // Unexpected token {

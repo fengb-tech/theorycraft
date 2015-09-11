@@ -22,7 +22,7 @@
   "homepage": "https://github.com/fengb-tech/tc",
   "dependencies": {
     "app-root-path": "^1.0.0",
-    "babel": "^5.1.13",
+    "babel-core": "^5.8.24",
     "co": "^4.5.4",
     "co-views": "^1.0.0",
     "eventemitter3": "^1.1.0",
