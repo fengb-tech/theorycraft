@@ -12,7 +12,7 @@ describe('lib/core/item/weapon', () => {
   describe('data', () => {
     it('has balanced weapons', () => {
       let baseDpms = Weapon.dpms(Weapon.data.templates[0])
-      for(let weapon of Weapon.data.templates){
+      for (let weapon of Weapon.data.templates) {
         expect(Weapon.dpms(weapon)).to.be.closeTo(baseDpms, EPS)
       }
     })

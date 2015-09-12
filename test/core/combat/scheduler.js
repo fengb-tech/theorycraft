@@ -10,11 +10,13 @@ describe('core/combat/scheduler', () => {
     ]
     let schedule = createSchedule(0, attackers)
 
+    /* eslint-disable standard/array-bracket-even-spacing */
     expect(schedule).to.deep.yield([   0, [attackers[0], attackers[1]]])
     expect(schedule).to.deep.yield([2000, [attackers[0]]])
     expect(schedule).to.deep.yield([3000, [attackers[1]]])
     expect(schedule).to.deep.yield([4000, [attackers[0]]])
     expect(schedule).to.deep.yield([6000, [attackers[0], attackers[1]]])
+    /* eslint-enable standard/array-bracket-even-spacing */
   })
 
   it('schedules initiative earlier', () => {
@@ -24,10 +26,12 @@ describe('core/combat/scheduler', () => {
     ]
     let schedule = createSchedule(0, attackers)
 
+    /* eslint-disable standard/array-bracket-even-spacing */
     expect(schedule).to.deep.yield([  -2, [attackers[1]]])
     expect(schedule).to.deep.yield([  -1, [attackers[0]]])
     expect(schedule).to.deep.yield([1999, [attackers[0]]])
     expect(schedule).to.deep.yield([2998, [attackers[1]]])
+    /* eslint-enable standard/array-bracket-even-spacing */
   })
 
   describe('bad input', () => {

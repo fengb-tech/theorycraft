@@ -2,7 +2,7 @@ require('./init')
 
 var gulp = {
   core: require('gulp'),
-  loadTasks(name){
+  loadTasks (name) {
     require(`lib/gulp/${name}`)
   },
 }

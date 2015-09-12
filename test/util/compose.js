@@ -9,7 +9,7 @@ describe('lib/util/compose', () => {
       let composed = compose.series(spies)
 
       composed()
-      for(let spy of spies){
+      for (let spy of spies) {
         expect(spy).to.have.been.called()
       }
     })
