@@ -1,6 +1,4 @@
 const chai = require('chai')
-
-chai
   .use(require('chai-properties'))
   .use(require('chai-generator'))
   .use(require('chai-eventemitter'))
