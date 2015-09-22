@@ -40,7 +40,7 @@
     "browserify": "^10.2.3",
     "browserify-shim": "^3.8.9",
     "chai": "^3.0.0",
-    "chai-eventemitter": "^1.0.1",
+    "chai-eventemitter": "^1.1.0",
     "chai-generator": "^2.0.2",
     "chai-properties": "^1.2.1",
     "dirty-chai": "^1.2.2",

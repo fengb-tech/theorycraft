@@ -14,22 +14,22 @@ describe('lib/util/eventable', () => {
     it('throws events for mutation', () => {
       let buff = eventable.circularBuffer(10)
 
-      expect(() => buff.push(4, 2)).to.cause(buff).to.emit('push', 4, 2)
+      expect(() => buff.push(4, 2)).to.emitFrom(buff, 'push', 4, 2)
       expect(_.toArray(buff)).to.eql([4, 2])
 
-      expect(() => buff.pop()).to.cause(buff).to.emit('pop')
+      expect(() => buff.pop()).to.emitFrom(buff, 'pop')
       expect(_.toArray(buff)).to.deep.equal([4])
 
-      expect(() => buff.unshift(8, 1)).to.cause(buff).to.emit('unshift', 8, 1)
+      expect(() => buff.unshift(8, 1)).to.emitFrom(buff, 'unshift', 8, 1)
       expect(_.toArray(buff)).to.deep.equal([8, 1, 4])
 
-      expect(() => buff.shift()).to.cause(buff).to.emit('shift')
+      expect(() => buff.shift()).to.emitFrom(buff, 'shift')
       expect(_.toArray(buff)).to.deep.equal([1, 4])
 
-      expect(() => buff.reverse()).to.cause(buff).to.emit('reverse')
+      expect(() => buff.reverse()).to.emitFrom(buff, 'reverse')
       expect(_.toArray(buff)).to.deep.equal([4, 1])
 
-      expect(() => buff.sort()).to.cause(buff).to.emit('sort')
+      expect(() => buff.sort()).to.emitFrom(buff, 'sort')
       expect(_.toArray(buff)).to.deep.equal([1, 4])
     })
 

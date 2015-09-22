@@ -110,7 +110,7 @@ describe('Stats', () => {
 
     it('emits a change event', () => {
       let stats = new Stats()
-      expect(() => stats.merge()).to.cause(stats).to.emit('change')
+      expect(() => stats.merge()).to.emitFrom(stats, 'change')
     })
   })
 
