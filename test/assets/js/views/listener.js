@@ -18,7 +18,7 @@ describe('lib/assets/js/views/listener', () => {
     this.tester.forceUpdate = sinon.spy()
   })
 
-  it('wires up forceUpdate after componentDidMount', function () {
+  it('calls forceUpdate after componentDidMount', function () {
     this.tester.componentDidMount()
 
     this.emitter.emit('update')
@@ -42,6 +42,15 @@ describe('lib/assets/js/views/listener', () => {
     expect(this.tester.forceUpdate).not.to.have.been.called()
 
     emitter.emit('update')
+    expect(this.tester.forceUpdate).to.have.been.called()
+  })
+
+  it('watches correct event when using function', function () {
+    this.tester.props.update = 'UPGRAYEDD'
+    this.tester._listenOn.emitter = (props) => props.update
+    this.tester.componentDidMount()
+
+    this.emitter.emit('UPGRAYEDD')
     expect(this.tester.forceUpdate).to.have.been.called()
   })
 })
