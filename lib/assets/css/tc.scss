@@ -49,3 +49,41 @@ $gutter-size: 8px;
   padding: 8px;
   border: 1px solid black;
 }
+
+.hud {
+  width: 200px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .combat-hp {
+    width: 45%;
+    position: relative;
+    background-color: lightgray;
+
+    &:first-child { float: left; }
+    &:last-child { float: right; }
+
+    .combat-hp-bar {
+      position: absolute;
+      background-color: red;
+      left: 0;
+      top: 0;
+      bottom: 0;
+
+      &.recover {
+        transition: width 300ms ease-in-out;
+      }
+    }
+
+    .combat-hp-name {
+      position: relative;
+      z-index: 1;
+    }
+
+    .combat-hp-value {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
