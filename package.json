@@ -20,6 +20,9 @@
     "url": "https://github.com/fengb-tech/tc/issues"
   },
   "homepage": "https://github.com/fengb-tech/tc",
+  "engines": {
+    "node": "4.0.x"
+  },
   "dependencies": {
     "app-root-path": "^1.0.0",
     "babel-core": "^5.8.24",
