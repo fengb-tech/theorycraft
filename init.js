@@ -4,7 +4,12 @@ require('babel-core/register')({
     'es6.destructuring',  // Unexpected token {
     'es6.parameters',     // Unexpected token =
     'es6.spread',         // Unexpected token ...
-    'es6.arrowFunctions', // Node still has issues with arrow spread (...args) =>
+    'es6.arrowFunctions', // Node has issues with arrow spread (...args) =>
+
+    // Optimization-killers: https://github.com/petkaantonov/bluebird/wiki/Optimization-killers
+    'regenerator',        // generators
+    'es6.classes',        // needed for regenerator + generator methods
+    'es6.forOf',          // Functions that contain a for-of statement
   ],
 })
 
