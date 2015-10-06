@@ -2,7 +2,7 @@
 
 ## Technology
 * [ES6](http://git.io/es6features) / [Babel](https://babeljs.io)
-* [io.js](https://iojs.org)
+* [node.js](https://nodejs.org)
 * [Koa](http://koajs.com)
 * [React](http://reactjs.com)
 
