@@ -50,7 +50,7 @@
     "dirty-chai": "^1.2.2",
     "endless-generator": "^1.0.0",
     "eslint": "^1.5.1",
-    "eslint-config-standard": "^4.4.0",
+    "eslint-config-standard-fengb": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^1.0.0",
