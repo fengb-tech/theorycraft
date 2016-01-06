@@ -87,3 +87,26 @@ $gutter-size: 8px;
     }
   }
 }
+
+.hero {
+  display: flex;
+  flex-direction: row;
+
+  > * {
+    flex: 1 1 auto;
+  }
+}
+
+.stats {
+  .stat-type {
+    float: left;
+    width: 80px;
+  }
+}
+
+.equipment {
+  .item-type {
+    float: left;
+    width: 80px;
+  }
+}
