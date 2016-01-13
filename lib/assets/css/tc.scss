@@ -97,20 +97,27 @@ $gutter-size: 8px;
   }
 }
 
-.stats {
+.stat {
+  display: flex;
+
   .stat-type {
-    float: left;
     width: 80px;
   }
 }
 
 .equipment {
-  .item-type {
-    float: left;
-    width: 80px;
+  .item {
+    display: flex;
+
+    .item-type {
+      width: 80px;
+    }
   }
 }
 
 .inspect-view {
   position: fixed;
+  background: white;
+  border: 1px solid black;
+  padding: 0 4px;
 }
