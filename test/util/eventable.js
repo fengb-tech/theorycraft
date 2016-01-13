@@ -3,6 +3,37 @@ const { expect, _ } = require('test/support')
 const eventable = require('lib/util/eventable')
 
 describe('lib/util/eventable', () => {
+  describe('array', () => {
+    it('behaves like an array', () => {
+      let a = eventable.array()
+      a[0] = 1
+      a[1] = 5
+      expect(_.toArray(a)).to.deep.equal([1, 5])
+    })
+
+    it('throws events for mutation', () => {
+      let a = eventable.array()
+
+      expect(() => a.push(4, 2)).to.emitFrom(a, 'push', 4, 2)
+      expect(_.toArray(a)).to.eql([4, 2])
+
+      expect(() => a.pop()).to.emitFrom(a, 'pop')
+      expect(_.toArray(a)).to.deep.equal([4])
+
+      expect(() => a.unshift(8, 1)).to.emitFrom(a, 'unshift', 8, 1)
+      expect(_.toArray(a)).to.deep.equal([8, 1, 4])
+
+      expect(() => a.shift()).to.emitFrom(a, 'shift')
+      expect(_.toArray(a)).to.deep.equal([1, 4])
+
+      expect(() => a.reverse()).to.emitFrom(a, 'reverse')
+      expect(_.toArray(a)).to.deep.equal([4, 1])
+
+      expect(() => a.sort()).to.emitFrom(a, 'sort')
+      expect(_.toArray(a)).to.deep.equal([1, 4])
+    })
+  })
+
   describe('circularBuffer', () => {
     it('behaves like an array', () => {
       let buff = eventable.circularBuffer(10)
