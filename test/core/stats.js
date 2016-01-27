@@ -9,7 +9,7 @@ describe('Stats', () => {
       expect(stats).to.have.properties({
         power:      0,
         accuracy:   0,
-        critical:   0,
+        finesse:    0,
         armor:      0,
         dodge:      0,
         resilience: 0,
@@ -24,7 +24,7 @@ describe('Stats', () => {
       expect(stats).to.have.properties({
         power:      4,
         accuracy:   8,
-        critical:   0,
+        finesse:    0,
         armor:      0,
         dodge:      0,
         resilience: 0,
@@ -43,7 +43,7 @@ describe('Stats', () => {
       expect(stats).to.have.properties({
         power:      200,
         accuracy:   200,
-        critical:   200,
+        finesse:    200,
         armor:      200,
         dodge:      200,
         resilience: 200,
@@ -62,7 +62,7 @@ describe('Stats', () => {
       expect(merged).to.have.properties({
         power:      0,
         accuracy:   0,
-        critical:   0,
+        finesse:    0,
         armor:      0,
         dodge:      0,
         resilience: 0,
@@ -78,7 +78,7 @@ describe('Stats', () => {
       expect(merged).to.have.properties({
         power:      210,
         accuracy:   210,
-        critical:   210,
+        finesse:    210,
         armor:      210,
         dodge:      210,
         resilience: 210,
@@ -95,13 +95,13 @@ describe('Stats', () => {
       }).merge({
         power:    5,
         accuracy: 6,
-        critical: 7,
+        finesse:  7,
       })
 
       expect(stats).to.have.properties({
         power:      6,
         accuracy:   8,
-        critical:   7,
+        finesse:    7,
         armor:      0,
         dodge:      0,
         resilience: 9,
@@ -123,13 +123,13 @@ describe('Stats', () => {
       }).add({
         power:    5,
         accuracy: 6,
-        critical: 7,
+        finesse:  7,
       })
 
       expect(stats).to.have.properties({
         power:      6,
         accuracy:   8,
-        critical:   7,
+        finesse:    7,
         armor:      0,
         dodge:      0,
         resilience: 9,
@@ -141,13 +141,13 @@ describe('Stats', () => {
       original.add({
         power:    5,
         accuracy: 6,
-        critical: 7,
+        finesse:  7,
       })
 
       expect(original).to.have.properties({
         power:      0,
         accuracy:   0,
-        critical:   0,
+        finesse:    0,
         armor:      0,
         dodge:      0,
         resilience: 0,
