@@ -3,12 +3,12 @@ const { expect } = require('test/support')
 const Base = require('lib/core/hero/base')
 
 describe('core/hero/base', () => {
-  describe('Base', () => {
+  describe('calcBase', () => {
     it('has correct xp', () => {
-      let base = new Base(1)
+      let base = Base({ xp: 1 })
       expect(base.xp).to.equal(1)
 
-      base = new Base(42)
+      base = Base({ xp: 42 })
       expect(base.xp).to.equal(42)
     })
   })
