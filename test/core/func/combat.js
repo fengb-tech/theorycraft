@@ -7,7 +7,7 @@ describe('lib/core/combat', () => {
     it('resolves', () => {
       let hero = new Hero()
       let combat = Combat.run(hero)
-      expect(combat.drops.length).to.equal(1)
+      expect(combat.blorks.drops.length).to.equal(1)
     })
   })
 })
