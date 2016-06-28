@@ -12,7 +12,8 @@ describe('Stats', () => {
         finesse:    0,
         armor:      0,
         dodge:      0,
-        resilience: 0,
+        greed:      0,
+        insight:    0,
       })
     })
 
@@ -27,7 +28,8 @@ describe('Stats', () => {
         finesse:    0,
         armor:      0,
         dodge:      0,
-        resilience: 0,
+        greed:      0,
+        insight:    0,
       })
     })
 
@@ -46,7 +48,8 @@ describe('Stats', () => {
         finesse:    200,
         armor:      200,
         dodge:      200,
-        resilience: 200,
+        greed:      200,
+        insight:    200,
       })
     })
 
@@ -65,7 +68,8 @@ describe('Stats', () => {
         finesse:    0,
         armor:      0,
         dodge:      0,
-        resilience: 0,
+        greed:      0,
+        insight:    0,
       })
     })
 
@@ -81,7 +85,8 @@ describe('Stats', () => {
         finesse:    210,
         armor:      210,
         dodge:      210,
-        resilience: 210,
+        greed:      210,
+        insight:    210,
       })
     })
   })
@@ -91,7 +96,6 @@ describe('Stats', () => {
       let stats = new Stats({
         power:      1,
         accuracy:   2,
-        resilience: 9,
       }).merge({
         power:    5,
         accuracy: 6,
@@ -104,7 +108,8 @@ describe('Stats', () => {
         finesse:    7,
         armor:      0,
         dodge:      0,
-        resilience: 9,
+        greed:      0,
+        insight:    0,
       })
     })
 
@@ -119,7 +124,6 @@ describe('Stats', () => {
       let stats = new Stats({
         power:      1,
         accuracy:   2,
-        resilience: 9,
       }).add({
         power:    5,
         accuracy: 6,
@@ -132,7 +136,8 @@ describe('Stats', () => {
         finesse:    7,
         armor:      0,
         dodge:      0,
-        resilience: 9,
+        greed:      0,
+        insight:    0,
       })
     })
 
@@ -150,7 +155,8 @@ describe('Stats', () => {
         finesse:    0,
         armor:      0,
         dodge:      0,
-        resilience: 0,
+        greed:      0,
+        insight:    0,
       })
     })
   })

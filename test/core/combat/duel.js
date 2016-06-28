@@ -83,22 +83,22 @@ describe('core/combat/duel', () => {
 
   describe('#targetMaxDamage', () => {
     beforeEach(function () {
-      this.defender.stats.resilience = 100
+      this.defender.stats.armor = 100
       this.attacker.maxDamage = 300
     })
 
-    it('is half damage when att.power = 0.5x def.resilience', function () {
-      this.attacker.stats.power = 0.5 * this.defender.stats.resilience
+    it('is half damage when att.power = 0.5x def.armor', function () {
+      this.attacker.stats.power = 0.5 * this.defender.stats.armor
       expect(this.duel.targetMaxDamage()).to.be.closeTo(this.attacker.maxDamage / 2, EPS)
     })
 
-    it('is regular damage when att.power = x def.resilience', function () {
-      this.attacker.stats.power = this.defender.stats.resilience
+    it('is regular damage when att.power = x def.armor', function () {
+      this.attacker.stats.power = this.defender.stats.armor
       expect(this.duel.targetMaxDamage()).to.be.closeTo(this.attacker.maxDamage, EPS)
     })
 
-    it('is double damage when att.power = 2x def.resilience', function () {
-      this.attacker.stats.power = 2 * this.defender.stats.resilience
+    it('is double damage when att.power = 2x def.armor', function () {
+      this.attacker.stats.power = 2 * this.defender.stats.armor
       expect(this.duel.targetMaxDamage()).to.be.closeTo(2 * this.attacker.maxDamage, EPS)
     })
   })
