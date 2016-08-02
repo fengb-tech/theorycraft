@@ -16,25 +16,45 @@ describe('core/combat/duel', () => {
     this.duel = new Duel(this.attacker, this.defender)
   })
 
-  describe('#calculate', () => {
-    beforeEach(function () {
-      _.extend(this.duel, {
-        hitPercent: () => 0.5,
-        minDamage: () => 100,
-        maxDamage: () => 300,
+  describe('#calculateDamageMultiplier', () => {
+    describe('when hitPercent < 1.0', function () {
+      beforeEach(function () {
+        _.extend(this.duel, {
+          hitPercent: () => 0.75,
+        })
+      })
+
+      it('is null when hitRoll is too low', function () {
+        expect(this.duel.calculateDamageMultiplier(0.24)).to.be.null()
+      })
+
+      it('is 1 when hitRoll == hitPercent', function () {
+        expect(this.duel.calculateDamageMultiplier(0.25)).to.equal(1)
+      })
+
+      it('is 1 when hitRoll == 1.0', function () {
+        expect(this.duel.calculateDamageMultiplier(1)).to.equal(1)
       })
     })
 
-    it('is null when hitRoll is too low', function () {
-      expect(this.duel.calculate(0.49)).to.be.null()
-    })
+    describe('when hitPercent > 1.0', function () {
+      beforeEach(function () {
+        _.extend(this.duel, {
+          hitPercent: () => 1.25,
+        })
+      })
 
-    it('is minDamage when hitRoll == hitPercent', function () {
-      expect(this.duel.calculate(0.5)).to.equal(100)
-    })
+      it('is 1 when hitRoll is too low', function () {
+        expect(this.duel.calculateDamageMultiplier(0.24)).to.equal(1)
+      })
 
-    it('is maxDamage when hitRoll == 1', function () {
-      expect(this.duel.calculate(1)).to.equal(300)
+      it('is 2 when hitRoll == hitPercent - 1', function () {
+        expect(this.duel.calculateDamageMultiplier(0.25)).to.equal(2)
+      })
+
+      it('is 2 when hitRoll == 1.0', function () {
+        expect(this.duel.calculateDamageMultiplier(1)).to.equal(2)
+      })
     })
   })
 
@@ -53,9 +73,9 @@ describe('core/combat/duel', () => {
       expect(this.duel.hitPercent()).to.be.closeTo(1, EPS)
     })
 
-    it('is 1 when att.accuracy = 2x def.dodge', function () {
+    it('is 2 when att.accuracy = 2x def.dodge', function () {
       this.attacker.stats.accuracy = 2 * this.defender.stats.dodge
-      expect(this.duel.hitPercent()).to.be.closeTo(1, EPS)
+      expect(this.duel.hitPercent()).to.be.closeTo(2, EPS)
     })
   })
 
