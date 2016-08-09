@@ -41,6 +41,7 @@
     "pixi-spine": "^1.0.20"
   },
   "devDependencies": {
+    "babel-loader": "^5.4.2",
     "babelify": "^6.3.0",
     "browserify": "^11.1.0",
     "browserify-global-shim": "^1.0.0",
