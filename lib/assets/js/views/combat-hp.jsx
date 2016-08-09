@@ -1,4 +1,3 @@
-const jade = require('react-jade')
 const Listener = require('./listener')
 
 const DEATH = '(x_x)'
@@ -23,9 +22,9 @@ const CombatHp = module.exports = class CombatHp extends Listener {
   barClasses () {
     let hp = this.hp()
     if (hp === 10000) {
-      return 'recover'
+      return 'combat-hp-bar recover'
     } else {
-      return ''
+      return 'combat-hp-bar'
     }
   }
 
@@ -40,11 +39,16 @@ const CombatHp = module.exports = class CombatHp extends Listener {
     let totalHp = 10000
     return { width: `${Math.round(100 * hp / totalHp)}%` }
   }
-}
 
-CombatHp.prototype.render = jade`
-dl.combat-hp
-  dt.combat-hp-bar(style=this.barStyle() class=this.barClasses())
-  dt.combat-hp-name= this.props.title
-  dd.combat-hp-value= this.hp()
-`
+  render () {
+    return (
+      <dl className='combat-hp'>
+        <dt className={this.barClasses()}
+            style={this.barStyle()}
+            />
+        <dt className='combat-hp-name'>{ this.props.title }</dt>
+        <dd className='combat-hp-value'>{ this.hp() }</dd>
+      </dl>
+    )
+  }
+}

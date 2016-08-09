@@ -1,5 +1,4 @@
 const React = require('react')
-const jade = require('react-jade')
 const _ = require('lodash')
 const Listener = require('./listener')
 const pubsub = require('../controllers/pubsub')
@@ -79,10 +78,14 @@ const Console = module.exports = class Console extends Listener {
     let node = React.findDOMNode(this)
     node.scrollTop = node.scrollHeight
   }
-}
 
-Console.prototype.render = jade`
-div.console
-  each line in this.console
-    div(key=line)= line
-`
+  render () {
+    return (
+      <div className='console'>
+        {this.console.map((line) => {
+          return <div key={ line }>{ line }</div>
+        })}
+      </div>
+    )
+  }
+}
