@@ -41,9 +41,6 @@
   },
   "devDependencies": {
     "babel-loader": "^5.4.2",
-    "babelify": "^6.3.0",
-    "browserify": "^11.1.0",
-    "browserify-global-shim": "^1.0.0",
     "chai": "^3.3.0",
     "chai-eventemitter": "^1.1.0",
     "chai-generator": "^2.0.2",
@@ -65,8 +62,6 @@
     "pixi-spine": "^1.0.20",
     "react": "^0.13.3",
     "sinon": "^1.17.0",
-    "sinon-chai": "^2.8.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.4.0"
+    "sinon-chai": "^2.8.0"
   }
 }
