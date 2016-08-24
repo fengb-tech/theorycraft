@@ -43,19 +43,22 @@ $gutter-size: 8px;
   }
 }
 
-.console {
+console {
+  display: block;
   height: 400px;
   overflow: auto;
   padding: 8px;
   border: 1px solid black;
 }
 
-.combat {
+combat {
+  display: block;
   width: 200px;
   margin: 0 auto;
   overflow: hidden;
 
-  .combat-hp {
+  combat-hp {
+    display: block;
     width: 45%;
     position: relative;
     background-color: lightgray;
@@ -88,7 +91,7 @@ $gutter-size: 8px;
   }
 }
 
-.hero {
+hero {
   display: flex;
   flex-direction: row;
 
@@ -97,25 +100,15 @@ $gutter-size: 8px;
   }
 }
 
-.pair {
+pair {
   display: flex;
 
-  .pair-name {
+  .pair-title {
     width: 80px;
   }
 }
 
-.equipment {
-  .item {
-    display: flex;
-
-    .item-type {
-      width: 80px;
-    }
-  }
-}
-
-.inspect-view {
+inspect {
   position: fixed;
   background: white;
   border: 1px solid black;

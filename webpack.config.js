@@ -1,7 +1,7 @@
 module.exports = {
   entry: './lib/assets/js/tc.js',
   externals: {
-    react: 'React',
+    riot: 'riot',
     lodash: '_',
     eventemitter3: 'EventEmitter',
     'pixi.js': 'PIXI',
@@ -12,8 +12,11 @@ module.exports = {
     filename: 'tc.js',
   },
   module: {
+    preLoaders: [
+      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs-loader', query: { type: 'es6' } },
+    ],
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: { externalHelpers: true },

@@ -58,9 +58,10 @@
     "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.6",
     "isparta": "^3.0.4",
-    "pixi.js": "^3.0.11",
     "pixi-spine": "^1.0.20",
-    "react": "^0.13.3",
+    "pixi.js": "^3.0.11",
+    "riot": "^2.5.0",
+    "riotjs-loader": "^3.0.0",
     "sinon": "^1.17.0",
     "sinon-chai": "^2.8.0"
   }
