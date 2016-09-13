@@ -6,6 +6,15 @@ const eventable = require('lib/util/eventable')
 <console>
   <div each={ line in console }>{ line }</div>
 
+  <style scoped>
+    :scope {
+      display: block;
+      overflow: auto;
+      padding: 8px;
+      border: 1px solid black;
+    }
+  </style>
+
   <script>
     this.isAutoScrolling = true
     this.console = eventable.circularBuffer(100)

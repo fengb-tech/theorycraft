@@ -5,6 +5,15 @@ const pubsub = require('lib/assets/js/controllers/pubsub')
 <inspect style={ css() } show={ item }>
   <inspect-item if={ item } item={ item } />
 
+  <style scoped>
+    :scope {
+      position: fixed;
+      background: white;
+      border: 1px solid black;
+      padding: 0 4px;
+    }
+  </style>
+
   <script>
     this.css = () => `left: ${this.x || 0}px; top: ${this.y || 0}px`
 

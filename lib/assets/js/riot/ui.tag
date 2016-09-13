@@ -8,4 +8,15 @@ require('./inspect.tag')
   <combat />
   <hero hero={ opts.game.hero } />
   <inspect />
+
+  <style scoped>
+    console {
+      height: 400px;
+    }
+
+    combat {
+      width: 200px;
+      margin: 0 auto;
+    }
+  </style>
 </ui>

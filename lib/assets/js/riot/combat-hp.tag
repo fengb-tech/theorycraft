@@ -1,11 +1,39 @@
 const DEATH = '(x_x)'
 
 <combat-hp>
-  <dt class={ barClasses() }
+  <dt class='combat-hp-bar'
       style={ barStyle() }
       />
   <dt class='combat-hp-name'>{ opts.title }</dt>
   <dd class='combat-hp-value'>{ hp() }</dd>
+
+  <style scoped>
+    :scope {
+      display: block;
+      position: relative;
+      background-color: lightgray;
+    }
+
+    .combat-hp-bar {
+      position: absolute;
+      background-color: red;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    .combat-hp-name {
+      position: relative;
+      z-index: 1;
+    }
+
+    .combat-hp-value {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+    }
+  </style>
 
   <script>
     this.on('mount', () => {
@@ -22,15 +50,6 @@ const DEATH = '(x_x)'
         } else {
           return DEATH
         }
-      }
-    }
-
-    this.barClasses = () => {
-      let hp = this.hp()
-      if (hp === 10000) {
-        return 'combat-hp-bar recover'
-      } else {
-        return 'combat-hp-bar'
       }
     }
 
