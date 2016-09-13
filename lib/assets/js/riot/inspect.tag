@@ -2,7 +2,9 @@ require('./inspect-item.tag')
 
 const pubsub = require('lib/assets/js/controllers/pubsub')
 
-<inspect style={ css() } show={ item }>
+<inspect show={ item }
+         style={ css({ left: px(x), top: px(y) }) }
+  >
   <inspect-item if={ item } item={ item } />
 
   <style scoped>
@@ -15,8 +17,6 @@ const pubsub = require('lib/assets/js/controllers/pubsub')
   </style>
 
   <script>
-    this.css = () => `left: ${this.x || 0}px; top: ${this.y || 0}px`
-
     const onMouseMove = (event) => {
       this.x = event.clientX + 10
       this.y = event.clientY + 10

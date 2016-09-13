@@ -2,7 +2,7 @@ const DEATH = '(x_x)'
 
 <combat-hp>
   <dt class='combat-hp-bar'
-      style={ barStyle() }
+      style={ css({ width: widthStyle() }) }
       />
   <dt class='combat-hp-name'>{ opts.title }</dt>
   <dd class='combat-hp-value'>{ hp() }</dd>
@@ -53,16 +53,16 @@ const DEATH = '(x_x)'
       }
     }
 
-    this.barStyle = () => {
+    this.widthStyle = () => {
       let hp = this.hp()
       if (hp == null) {
-        return 'width: 100%'
+        return '100%'
       } else if (hp === DEATH) {
-        return 'width: 0'
+        return '0'
       }
 
       let totalHp = 10000
-      return `width: ${Math.round(100 * hp / totalHp)}%`
+      return `${Math.round(100 * hp / totalHp)}%`
     }
   </script>
 </combat-hp>
