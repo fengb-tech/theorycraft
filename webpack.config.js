@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './lib/assets/js/tc.js',
+  entry: `${__dirname}/lib/assets/js/tc.js`,
   externals: {
     riot: 'riot',
     lodash: '_',
@@ -8,7 +8,7 @@ module.exports = {
     'pixi-spine': 'PIXI.spine',
   },
   output: {
-    path: './public/assets',
+    path: `${__dirname}/public/assets`,
     filename: 'tc.js',
   },
   module: {
