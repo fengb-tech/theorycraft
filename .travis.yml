@@ -1,12 +1,7 @@
 language: node_js
 node_js:
-  - '4.0'
+  - 6
+  - 5
+  - 4
 
-script: 'gulp assets test'
-
-env:
-  - 'TC_COVERAGE=true'
-
-after_success:
-  - 'npm install -g codeclimate-test-reporter'
-  - 'codeclimate < coverage/lcov.info'
+script: 'npm run test'

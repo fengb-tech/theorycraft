@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "gulp test"
+    "test": "mocha",
+    "test-watch": "mocha --watch"
   },
   "repository": {
     "type": "git",
@@ -48,18 +49,17 @@
     "chai-properties": "^1.2.1",
     "dirty-chai": "^1.2.2",
     "endless-generator": "^1.0.0",
-    "eslint": "^1.5.1",
     "eslint-config-standard-fengb": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
-    "gulp-eslint": "^1.0.0",
     "gulp-istanbul": "^0.10.0",
-    "gulp-mocha": "^2.1.3",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.6",
     "isparta": "^3.0.4",
     "koa-webpack-dev": "^1.0.5",
+    "mocha": "^3.0.2",
+    "mocha-eslint": "^1.0.0",
     "pixi-spine": "^1.0.20",
     "pixi.js": "^3.0.11",
     "riot": "^2.5.0",
