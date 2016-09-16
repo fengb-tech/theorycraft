@@ -9,8 +9,7 @@
   "scripts": {
     "build": "webpack && gulp assets",
     "start": "node index.js",
-    "test": "mocha",
-    "test-watch": "mocha --watch"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
