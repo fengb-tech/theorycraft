@@ -5,25 +5,25 @@ module.exports = {
     lodash: '_',
     eventemitter3: 'EventEmitter',
     'pixi.js': 'PIXI',
-    'pixi-spine': 'PIXI.spine',
+    'pixi-spine': 'PIXI.spine'
   },
   output: {
     path: `${__dirname}/public/assets`,
-    filename: 'tc.js',
+    filename: 'tc.js'
   },
   module: {
     preLoaders: [
-      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs-loader', query: { type: 'es6' } },
+      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs-loader', query: { type: 'es6' } }
     ],
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel',
-      query: { externalHelpers: true },
-    }],
+      query: { externalHelpers: true }
+    }]
   },
   resolve: {
     modulesDirectories: [],
-    fallback: __dirname,
-  },
+    fallback: __dirname
+  }
 }

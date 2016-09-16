@@ -6,12 +6,12 @@ describe('core/combat/scheduler', () => {
   it('schedules based on attackDelay', () => {
     let attackers = [
       { attackDelay: 2000, initiative: 0 },
-      { attackDelay: 3000, initiative: 0 },
+      { attackDelay: 3000, initiative: 0 }
     ]
     let schedule = createSchedule(0, attackers)
 
     /* eslint-disable standard/array-bracket-even-spacing */
-    expect(schedule).to.deep.yield([   0, [attackers[0], attackers[1]]])
+    expect(schedule).to.deep.yield([ 0, [attackers[0], attackers[1]]])
     expect(schedule).to.deep.yield([2000, [attackers[0]]])
     expect(schedule).to.deep.yield([3000, [attackers[1]]])
     expect(schedule).to.deep.yield([4000, [attackers[0]]])
@@ -22,13 +22,13 @@ describe('core/combat/scheduler', () => {
   it('schedules initiative earlier', () => {
     let attackers = [
       { attackDelay: 2000, initiative: 1 },
-      { attackDelay: 3000, initiative: 2 },
+      { attackDelay: 3000, initiative: 2 }
     ]
     let schedule = createSchedule(0, attackers)
 
     /* eslint-disable standard/array-bracket-even-spacing */
-    expect(schedule).to.deep.yield([  -2, [attackers[1]]])
-    expect(schedule).to.deep.yield([  -1, [attackers[0]]])
+    expect(schedule).to.deep.yield([ -2, [attackers[1]]])
+    expect(schedule).to.deep.yield([ -1, [attackers[0]]])
     expect(schedule).to.deep.yield([1999, [attackers[0]]])
     expect(schedule).to.deep.yield([2998, [attackers[1]]])
     /* eslint-enable standard/array-bracket-even-spacing */

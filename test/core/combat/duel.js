@@ -6,11 +6,11 @@ const Stats = require('lib/core/stats')
 describe('core/combat/duel', () => {
   beforeEach(function () {
     this.attacker = {
-      stats: Stats.allAt(0),
+      stats: Stats.allAt(0)
     }
 
     this.defender = {
-      stats: Stats.allAt(0),
+      stats: Stats.allAt(0)
     }
 
     this.duel = new Duel(this.attacker, this.defender)
@@ -20,7 +20,7 @@ describe('core/combat/duel', () => {
     describe('when hitPercent < 1.0', function () {
       beforeEach(function () {
         _.extend(this.duel, {
-          hitPercent: () => 0.75,
+          hitPercent: () => 0.75
         })
       })
 
@@ -40,7 +40,7 @@ describe('core/combat/duel', () => {
     describe('when hitPercent > 1.0', function () {
       beforeEach(function () {
         _.extend(this.duel, {
-          hitPercent: () => 1.25,
+          hitPercent: () => 1.25
         })
       })
 

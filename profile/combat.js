@@ -12,7 +12,7 @@ e.stats.armor = 10000000 // ENDLESS COMBAT
 
 var c = new Combat(h, {
   enemies: [e],
-  runTimeout: 100000000,
+  runTimeout: 100000000
 })
 var run = c.runner()
 

@@ -7,34 +7,34 @@ describe('Stats', () => {
     it('builds as 0 everything', () => {
       let stats = new Stats()
       expect(stats).to.have.properties({
-        power:      0,
-        accuracy:   0,
-        finesse:    0,
-        armor:      0,
-        dodge:      0,
-        greed:      0,
-        insight:    0,
+        power: 0,
+        accuracy: 0,
+        finesse: 0,
+        armor: 0,
+        dodge: 0,
+        greed: 0,
+        insight: 0
       })
     })
 
     it('builds using existing data where possible', () => {
       let stats = new Stats({
-        power:    4,
-        accuracy: 8,
+        power: 4,
+        accuracy: 8
       })
       expect(stats).to.have.properties({
-        power:      4,
-        accuracy:   8,
-        finesse:    0,
-        armor:      0,
-        dodge:      0,
-        greed:      0,
-        insight:    0,
+        power: 4,
+        accuracy: 8,
+        finesse: 0,
+        armor: 0,
+        dodge: 0,
+        greed: 0,
+        insight: 0
       })
     })
 
     it('coerces to integer', () => {
-      let stats = new Stats({ power:  100.1 })
+      let stats = new Stats({ power: 100.1 })
       expect(stats.power).to.equal(100)
     })
   })
@@ -43,13 +43,13 @@ describe('Stats', () => {
     it('creates with all stats at one value', () => {
       let stats = Stats.allAt(200)
       expect(stats).to.have.properties({
-        power:      200,
-        accuracy:   200,
-        finesse:    200,
-        armor:      200,
-        dodge:      200,
-        greed:      200,
-        insight:    200,
+        power: 200,
+        accuracy: 200,
+        finesse: 200,
+        armor: 200,
+        dodge: 200,
+        greed: 200,
+        insight: 200
       })
     })
 
@@ -63,30 +63,30 @@ describe('Stats', () => {
     it('returns 0s if no stats', () => {
       let merged = Stats.mergeAll([])
       expect(merged).to.have.properties({
-        power:      0,
-        accuracy:   0,
-        finesse:    0,
-        armor:      0,
-        dodge:      0,
-        greed:      0,
-        insight:    0,
+        power: 0,
+        accuracy: 0,
+        finesse: 0,
+        armor: 0,
+        dodge: 0,
+        greed: 0,
+        insight: 0
       })
     })
 
     it('merges a bunch of stats', () => {
       let statses = [
         Stats.allAt(10),
-        Stats.allAt(200),
+        Stats.allAt(200)
       ]
       let merged = Stats.mergeAll(statses)
       expect(merged).to.have.properties({
-        power:      210,
-        accuracy:   210,
-        finesse:    210,
-        armor:      210,
-        dodge:      210,
-        greed:      210,
-        insight:    210,
+        power: 210,
+        accuracy: 210,
+        finesse: 210,
+        armor: 210,
+        dodge: 210,
+        greed: 210,
+        insight: 210
       })
     })
   })
@@ -94,22 +94,22 @@ describe('Stats', () => {
   describe('#merge()', () => {
     it('creates a new object with merged stats', () => {
       let stats = new Stats({
-        power:      1,
-        accuracy:   2,
+        power: 1,
+        accuracy: 2
       }).merge({
-        power:    5,
+        power: 5,
         accuracy: 6,
-        finesse:  7,
+        finesse: 7
       })
 
       expect(stats).to.have.properties({
-        power:      6,
-        accuracy:   8,
-        finesse:    7,
-        armor:      0,
-        dodge:      0,
-        greed:      0,
-        insight:    0,
+        power: 6,
+        accuracy: 8,
+        finesse: 7,
+        armor: 0,
+        dodge: 0,
+        greed: 0,
+        insight: 0
       })
     })
 
@@ -122,41 +122,41 @@ describe('Stats', () => {
   describe('#add()', () => {
     it('creates a new object with merged stats', () => {
       let stats = new Stats({
-        power:      1,
-        accuracy:   2,
+        power: 1,
+        accuracy: 2
       }).add({
-        power:    5,
+        power: 5,
         accuracy: 6,
-        finesse:  7,
+        finesse: 7
       })
 
       expect(stats).to.have.properties({
-        power:      6,
-        accuracy:   8,
-        finesse:    7,
-        armor:      0,
-        dodge:      0,
-        greed:      0,
-        insight:    0,
+        power: 6,
+        accuracy: 8,
+        finesse: 7,
+        armor: 0,
+        dodge: 0,
+        greed: 0,
+        insight: 0
       })
     })
 
     it('does not change original stats', () => {
       let original = Stats.allAt(0)
       original.add({
-        power:    5,
+        power: 5,
         accuracy: 6,
-        finesse:  7,
+        finesse: 7
       })
 
       expect(original).to.have.properties({
-        power:      0,
-        accuracy:   0,
-        finesse:    0,
-        armor:      0,
-        dodge:      0,
-        greed:      0,
-        insight:    0,
+        power: 0,
+        accuracy: 0,
+        finesse: 0,
+        armor: 0,
+        dodge: 0,
+        greed: 0,
+        insight: 0
       })
     })
   })

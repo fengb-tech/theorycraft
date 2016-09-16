@@ -9,8 +9,8 @@ require('babel-core/register')({
     // Optimization-killers: https://github.com/petkaantonov/bluebird/wiki/Optimization-killers
     'regenerator',        // generators
     'es6.classes',        // needed for regenerator + generator methods
-    'es6.forOf',          // Functions that contain a for-of statement
-  ],
+    'es6.forOf'          // Functions that contain a for-of statement
+  ]
 })
 
 ;(function addLocalDirToLoadPath () {

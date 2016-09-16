@@ -5,7 +5,7 @@ let template = {
   names: ['template'],
   attackDelay: 1000,
   minDamage: 400,
-  maxDamage: 600,
+  maxDamage: 600
 }
 
 describe('lib/core/item/weapon', () => {

@@ -10,5 +10,5 @@ module.exports = {
   expect: chai.expect,
   EPS: 0.001,
   sinon: require('sinon'),
-  _: require('lodash'),
+  _: require('lodash')
 }

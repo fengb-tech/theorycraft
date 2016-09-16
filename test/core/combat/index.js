@@ -27,7 +27,7 @@ describe('lib/core/combat', () => {
       _.extend(this.combat, {
         schedule: [],
         isDone: () => false,
-        processAttack: (...args) => [args],
+        processAttack: (...args) => [args]
       })
       this.combatRunner = this.combat.runner()
     })
@@ -48,7 +48,7 @@ describe('lib/core/combat', () => {
     it('terminates when taking too long', function () {
       _.extend(this.combat, {
         schedule: endlessGenerator([0, []]),
-        runTimeout: 10,
+        runTimeout: 10
       })
       expect(() => this.combat.run()).to.throw(RangeError)
     })
