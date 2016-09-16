@@ -13,14 +13,11 @@ module.exports = {
   },
   module: {
     preLoaders: [
-      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs-loader', query: { type: 'es6' } }
+      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs?type=es6' }
     ],
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: { externalHelpers: true }
-    }]
+    loaders: [
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel?externalHelpers' }
+    ]
   },
   resolve: {
     modulesDirectories: [],

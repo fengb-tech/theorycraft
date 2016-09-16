@@ -7,6 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
+    "build": "webpack && gulp assets",
     "start": "node index.js",
     "test": "mocha",
     "test-watch": "mocha --watch"
@@ -51,11 +52,7 @@
     "endless-generator": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
-    "gulp-istanbul": "^0.10.0",
-    "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.4",
-    "gulp-util": "^3.0.6",
-    "isparta": "^3.0.4",
     "koa-webpack-dev": "^1.0.5",
     "mocha": "^3.0.2",
     "mocha-standard": "^1.0.0",
