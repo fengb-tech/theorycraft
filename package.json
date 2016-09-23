@@ -52,7 +52,7 @@
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.0.4",
-    "koa-webpack-dev": "^1.0.5",
+    "koa-webpack-dev": "1.0.4",
     "mocha": "^3.0.2",
     "mocha-standard": "^1.0.0",
     "pixi-spine": "^1.0.20",
