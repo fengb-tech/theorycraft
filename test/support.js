@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const chai = require('chai')
   .use(require('chai-properties'))
   .use(require('chai-generator'))
@@ -9,6 +10,11 @@ const chai = require('chai')
 module.exports = {
   expect: chai.expect,
   EPS: 0.001,
+  _: _,
   sinon: require('sinon'),
-  _: require('lodash')
+  request: _.once(() => {
+    const supertest = require('supertest-as-promised')
+    const app = require('lib/server')
+    return supertest(app.callback())
+  })
 }

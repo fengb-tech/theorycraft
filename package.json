@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack && gulp assets",
     "start": "node index.js",
-    "test": "mocha"
+    "test": "mocha test*"
   },
   "repository": {
     "type": "git",
@@ -61,9 +61,16 @@
     "riotjs-loader": "^3.0.0",
     "sinon": "^1.17.0",
     "sinon-chai": "^2.8.0",
-    "standard": "^8.0.0"
+    "standard": "^8.0.0",
+    "supertest": "^2.0.0",
+    "supertest-as-promised": "^4.0.0"
   },
   "standard": {
-    "globals": ["describe", "it", "beforeEach", "afterEach"]
+    "globals": [
+      "describe",
+      "it",
+      "beforeEach",
+      "afterEach"
+    ]
   }
 }

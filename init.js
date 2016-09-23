@@ -14,6 +14,9 @@ require('babel-core/register')({
 })
 
 ;(function addLocalDirToLoadPath () {
+  // Load app-root-path here to prevent global contamination
+  require('app-root-path')
+
   if (process.env.NODE_PATH) {
     process.env.NODE_PATH += `:${__dirname}`
   } else {
