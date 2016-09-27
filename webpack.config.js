@@ -3,7 +3,7 @@ module.exports = {
   externals: {
     riot: 'riot',
     lodash: '_',
-    eventemitter3: 'EventEmitter',
+    eventemitter3: 'PIXI.utils.EventEmitter',
     'pixi.js': 'PIXI',
     'pixi-spine': 'PIXI.spine'
   },
