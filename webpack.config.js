@@ -16,7 +16,7 @@ module.exports = {
       { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs?type=es6' }
     ],
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel?externalHelpers' }
+      { test: /\.(js|tag)$/, exclude: /node_modules/, loader: 'babel?externalHelpers' }
     ]
   },
   resolve: {
