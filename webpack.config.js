@@ -1,26 +1,42 @@
+var _ = require('lodash')
+var webpack = require('webpack')
+
+var MODULES = /\bnode_modules\b/
+
+var VENDOR = {
+  'browser-polyfill': `${__dirname}/node_modules/babel-core/browser-polyfill.js`,
+  'external-helpers': `${__dirname}/node_modules/babel-core/external-helpers.js`,
+  riot: `${__dirname}/node_modules/riot/riot.js`,
+  lodash: `${__dirname}/node_modules/lodash/lodash.js`,
+  'pixi.js': `${__dirname}/node_modules/pixi.js/bin/pixi.js`,
+  'pixi-spine': `${__dirname}/node_modules/pixi-spine/bin/pixi-spine.js`,
+  eventemitter3: `${__dirname}/node_modules/eventemitter3/index.js`
+}
+
 module.exports = {
-  entry: `${__dirname}/lib/assets/js/tc.js`,
-  externals: {
-    riot: 'riot',
-    lodash: '_',
-    eventemitter3: 'PIXI.utils.EventEmitter',
-    'pixi.js': 'PIXI',
-    'pixi-spine': 'PIXI.spine'
+  entry: {
+    tc: `${__dirname}/lib/assets/js/tc.js`,
+    vendor: _.values(VENDOR)
   },
   output: {
     path: `${__dirname}/public/assets`,
-    filename: 'tc.js'
+    filename: '[name].js'
   },
   module: {
+    noParse: _.values(VENDOR),
     preLoaders: [
-      { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs?type=es6' }
+      { test: /\.tag$/, exclude: MODULES, loader: 'riotjs?type=es6!imports?riot=riot' }
     ],
     loaders: [
-      { test: /\.(js|tag)$/, exclude: /node_modules/, loader: 'babel?externalHelpers' }
+      { test: /\.(js|tag)$/, exclude: MODULES, loader: 'babel?externalHelpers' }
     ]
   },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' })
+  ],
   resolve: {
+    root: __dirname,
     modulesDirectories: [],
-    fallback: __dirname
+    alias: VENDOR
   }
 }
