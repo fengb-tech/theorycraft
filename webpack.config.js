@@ -10,7 +10,8 @@ var VENDOR = {
   lodash: `${__dirname}/node_modules/lodash/lodash.js`,
   'pixi.js': `${__dirname}/node_modules/pixi.js/bin/pixi.js`,
   'pixi-spine': `${__dirname}/node_modules/pixi-spine/bin/pixi-spine.js`,
-  eventemitter3: `${__dirname}/node_modules/eventemitter3/index.js`
+  eventemitter3: `${__dirname}/node_modules/eventemitter3/index.js`,
+  bluebird: `${__dirname}/node_modules/bluebird/js/browser/bluebird.js`
 }
 
 module.exports = {
