@@ -1,4 +1,4 @@
-const { expect, _, EPS } = require('test/support')
+const { expect, EPS } = require('test/support')
 
 const Duel = require('lib/core/combat/duel')
 const Stats = require('lib/core/stats')
@@ -14,48 +14,6 @@ describe('core/combat/duel', () => {
     }
 
     this.duel = new Duel(this.attacker, this.defender)
-  })
-
-  describe('#calculateDamageMultiplier', () => {
-    describe('when hitPercent < 1.0', function () {
-      beforeEach(function () {
-        _.extend(this.duel, {
-          hitPercent: () => 0.75
-        })
-      })
-
-      it('is null when hitRoll is too low', function () {
-        expect(this.duel.calculateDamageMultiplier(0.24)).to.be.null()
-      })
-
-      it('is 1 when hitRoll == hitPercent', function () {
-        expect(this.duel.calculateDamageMultiplier(0.25)).to.equal(1)
-      })
-
-      it('is 1 when hitRoll == 1.0', function () {
-        expect(this.duel.calculateDamageMultiplier(1)).to.equal(1)
-      })
-    })
-
-    describe('when hitPercent > 1.0', function () {
-      beforeEach(function () {
-        _.extend(this.duel, {
-          hitPercent: () => 1.25
-        })
-      })
-
-      it('is 1 when hitRoll is too low', function () {
-        expect(this.duel.calculateDamageMultiplier(0.24)).to.equal(1)
-      })
-
-      it('is 2 when hitRoll == hitPercent - 1', function () {
-        expect(this.duel.calculateDamageMultiplier(0.25)).to.equal(2)
-      })
-
-      it('is 2 when hitRoll == 1.0', function () {
-        expect(this.duel.calculateDamageMultiplier(1)).to.equal(2)
-      })
-    })
   })
 
   describe('#hitPercent', () => {
@@ -76,6 +34,51 @@ describe('core/combat/duel', () => {
     it('is 2 when att.accuracy = 2x def.dodge', function () {
       this.attacker.stats.accuracy = 2 * this.defender.stats.dodge
       expect(this.duel.hitPercent()).to.be.closeTo(2, EPS)
+    })
+  })
+
+  describe('#targetPercent', () => {
+    // Roll needs to be >= 0.05
+    it('is 0.05 when hitPercent = 0.95', function () {
+      this.duel.hitPercent = () => 0.95
+      expect(this.duel.targetPercent()).to.be.closeTo(0.05, EPS)
+    })
+
+    it('is 0.95 when hitPercent = 1.05', function () {
+      this.duel.hitPercent = () => 1.05
+      expect(this.duel.targetPercent()).to.be.closeTo(0.95, EPS)
+    })
+
+    it('is 0.9 when hitPercent = 2.1', function () {
+      this.duel.hitPercent = () => 2.1
+      expect(this.duel.targetPercent()).to.be.closeTo(0.9, EPS)
+    })
+
+    it('is 0.2 when hitPercent = 10.8', function () {
+      this.duel.hitPercent = () => 10.8
+      expect(this.duel.targetPercent()).to.be.closeTo(0.2, EPS)
+    })
+  })
+
+  describe('#baseMultiplier', () => {
+    it('is 0 when hitPercent = 0.95', function () {
+      this.duel.hitPercent = () => 0.95
+      expect(this.duel.baseMultiplier()).to.equal(0)
+    })
+
+    it('is 1 when hitPercent = 1.05', function () {
+      this.duel.hitPercent = () => 1.05
+      expect(this.duel.baseMultiplier()).to.equal(1)
+    })
+
+    it('is 1 when hitPercent = 1.95', function () {
+      this.duel.hitPercent = () => 1.95
+      expect(this.duel.baseMultiplier()).to.equal(1)
+    })
+
+    it('is 9 when hitPercent = 9.95', function () {
+      this.duel.hitPercent = () => 9.95
+      expect(this.duel.baseMultiplier()).to.equal(9)
     })
   })
 
