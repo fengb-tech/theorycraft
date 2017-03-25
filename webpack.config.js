@@ -8,7 +8,7 @@ var VENDOR = {
   'external-helpers': `${__dirname}/node_modules/babel-core/external-helpers.js`,
   riot: `${__dirname}/node_modules/riot/riot.js`,
   lodash: `${__dirname}/node_modules/lodash/lodash.js`,
-  'pixi.js': `${__dirname}/node_modules/pixi.js/bin/pixi.js`,
+  'pixi.js': `${__dirname}/node_modules/pixi.js/dist/pixi.js`,
   'pixi-spine': `${__dirname}/node_modules/pixi-spine/bin/pixi-spine.js`,
   eventemitter3: `${__dirname}/node_modules/eventemitter3/index.js`,
   bluebird: `${__dirname}/node_modules/bluebird/js/browser/bluebird.js`
@@ -25,19 +25,16 @@ module.exports = {
   },
   module: {
     noParse: _.values(VENDOR),
-    preLoaders: [
-      { test: /\.tag$/, exclude: MODULES, loader: 'riotjs?type=es6!imports?riot=riot' }
-    ],
-    loaders: [
-      { test: /\.(js|tag)$/, exclude: MODULES, loader: 'babel?externalHelpers' }
+    rules: [
+      { test: /\.tag$/, enforce: 'pre', exclude: MODULES, loader: 'riotjs-loader?type=es6!imports-loader?riot=riot' },
+      { test: /\.(js|tag)$/, exclude: MODULES, loader: 'babel-loader?externalHelpers' }
     ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' })
   ],
   resolve: {
-    root: __dirname,
-    modulesDirectories: [],
+    modules: [__dirname],
     alias: VENDOR
   }
 }
