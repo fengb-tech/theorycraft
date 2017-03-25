@@ -1,3 +1,4 @@
+/*
 require('babel-core/register')({
   whitelist: [
     'strict',             // Block-scoped declarations (let, const, function, class) not yet supported outside strict mode
@@ -12,6 +13,7 @@ require('babel-core/register')({
     'es6.forOf'          // Functions that contain a for-of statement
   ]
 })
+*/
 
 ;(function addLocalDirToLoadPath () {
   // Load app-root-path here to prevent global contamination

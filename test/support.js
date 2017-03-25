@@ -13,7 +13,7 @@ module.exports = {
   _: _,
   sinon: require('sinon'),
   request: _.once(() => {
-    const supertest = require('supertest-as-promised')
+    const supertest = require('supertest')
     const app = require('lib/server')
     return supertest(app.callback())
   })
